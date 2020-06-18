@@ -11,15 +11,15 @@
     <title>Register account</title>
 
     <!-- Icons font CSS-->
-    <link href="/template/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="/template/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/template/register/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/template/register/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
         rel="stylesheet">
 
     <!-- Vendor CSS-->
-    <link href="/template/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="/template/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="/template/register/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/template/register/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link href="/css/register/main.css" rel="stylesheet" media="all">
@@ -33,20 +33,20 @@
                     <h2 class="title">REGISTER</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form name="register" action="/register" method="POST" onsubmit="return validate();">
                         <div class="form-row m-b-55">
                             <div class="name">Name</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="firstname">
+                                            <input class="input--style-5" value="{{info.firstname}}" id="firstname" type="text" name="firstname">
                                             <label class="label--desc">first name</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="lastname">
+                                            <input class="input--style-5" value="{{info.lastname}}" id="lastname" type="text" name="lastname">
                                             <label class="label--desc">last name</label>
                                         </div>
                                     </div>
@@ -57,7 +57,20 @@
                             <div class="name">Email</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" name="email">
+                                    <input class="input--style-5" value="{{info.email}}" id="email" type="email" name="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Username</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {{#if info.username}}
+                                        <input class="input--style-5" style="border: solid 0.5px red;" value="{{info.username}}" id="username" type="text" name="username" aria-selected="true">
+                                    {{else}}
+                                        <input class="input--style-5" id="username" type="text" name="username">
+                                    {{/if}}
+                                    
                                 </div>
                             </div>
                         </div>
@@ -65,7 +78,7 @@
                             <div class="name">Password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password">
+                                    <input class="input--style-5" value="{{info.password}}" id="password" type="password" name="password">
                                 </div>
                             </div>
                         </div>
@@ -73,7 +86,7 @@
                             <div class="name">Confirm password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="confirmpassword">
+                                    <input class="input--style-5" value="{{info.confirmpassword}}" id="confirmpassword" type="password" name="confirmpassword">
                                 </div>
                             </div>
                         </div>
@@ -90,11 +103,11 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="/template/jquery/jquery.min.js"></script>
+    <script src="/template/register/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
-    <script src="/template/select2/select2.min.js"></script>
-    <script src="/template/datepicker/moment.min.js"></script>
-    <script src="/template/datepicker/daterangepicker.js"></script>
+    <script src="/template/register/select2/select2.min.js"></script>
+    <script src="/template/register/datepicker/moment.min.js"></script>
+    <script src="/template/register/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
     <script src="/js/register/global.js"></script>
