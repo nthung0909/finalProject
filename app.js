@@ -16,10 +16,9 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-
 app.use('/', require('./routes/home.route'));
+app.use('/login', require('./routes/login.route'));
 app.use('/register', require('./routes/register.route'));
-
 
 app.listen(PORT, (req, res) => {
     console.log(`app is running at http:${PORT}`);
