@@ -16,10 +16,13 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.use('/', require('./routes/home.route'));
+require('./middlewares/session.mdw')(app);
+require('./middlewares/locals.mdw')(app);
+
+app.use('/', require('./routes/readers.route'));
 app.use('/login', require('./routes/login.route'));
 app.use('/register', require('./routes/register.route'));
-
+app.use('/admin', require('./routes/admin.route'));
 app.listen(PORT, (req, res) => {
     console.log(`app is running at http:${PORT}`);
 });

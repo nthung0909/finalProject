@@ -51,6 +51,8 @@ router.post('/', async(req, res) => {
         });
         console.log(req.body);
         await accModel.add(req.body);
+        req.session.authUser = req.body;
+        req.session.isLogin = true;
         res.redirect('/');
     }
 });
