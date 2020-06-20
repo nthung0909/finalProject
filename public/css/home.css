@@ -1,0 +1,43 @@
+@media (max-width: 767px) {
+    .hidden-xs-down {
+        display: none !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .hidden-sm-up {
+        display: none !important;
+    }
+}
+
+.topbar-section {
+    background-color: rgb(86, 61, 124);
+    position: relative;
+}
+
+.top-login {
+    color: white;
+    text-decoration: none;
+}
+
+.top-login>a {
+    color: white;
+}
+
+.top-login>a:active {
+    color: rgb(74, 240, 74)
+}
+
+.top-login>a:hover {
+    color: rgb(74, 240, 74)
+}
+
+.top-nav {
+    padding: 0.4rem 0;
+    position: relative;
+    background-color: rgb(63, 48, 89)
+}
+
+.top-nav a {
+    color: white;
+}
