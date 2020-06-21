@@ -15,9 +15,9 @@
 </head>
 
 <body>
-  <header>
-    <section class="topbar-section shadow">
-      <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="row topbar-section">
+      <div class="col-12">
         <div class="container">
           <div class="row justify-content-between">
             <div class="col-lg-2 hidden-xs-down">
@@ -37,51 +37,68 @@
                 </nav>
               </div>
             </div>
-
             <div class="col-sm-12 col-md-2 col-lg-2 p-0">
               <div class="top-login pt-3 text-right">
+                {{#if isLogin}}
+                <div class="dropdown">
+                  <p style="color:white" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
+                    role="button">
+                    {{authUser.fullname}} <i class="fa fa-cog" aria-hidden="true"></i></p>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> Cá nhân</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <form action="/logout" method="POST">
+                      <button class="dropdown-item" type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng
+                        xuất</button>
+                    </form>
+                  </div>
+                </div>
+                {{else}}
                 <a href="/login">Login</a>/
                 <a href="/register">Register</a>
+                {{/if}}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <section class="top-nav">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <ul class="nav justify-content-center">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">HOME</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Công nghệ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Thể thao</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Y Tế</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Giáo dục</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+    </div>
+    <div class="row top-nav">
+      <div class="col-12">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/?cate=congnghe">Công nghệ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/?cate=vanhoa">Văn hóa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/?cate=xahoi">Xã hội</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/?cate=thethao">Thể thao</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/?cate=yte">Y Tế</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/?cate=giaoduc">Giáo dục</a>
+          </li>
+        </ul>
       </div>
-    </section>
-  </header>
-  <section>
-    {{{body}}}
-  </section>
+    </div>
+    <div class="row">
+      {{{body}}}
+    </div>
+  </div>
   <footer>
-    
   </footer>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/home.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
