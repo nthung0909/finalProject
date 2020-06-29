@@ -1,8 +1,10 @@
 const exppress = require('express');
 const redi = require('../middlewares/auth.mdw');
+const cateModel = require('../models/category.model');
 const router = exppress.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async(req, res) => {
+    // const cate = await cateModel.all();
     res.render('readers/home', {
         authUser: res.locals.lcAuthUser,
         isLogin: res.locals.lcLogin

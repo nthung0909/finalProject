@@ -53,6 +53,42 @@
     height: 100vmin;
 }
 
-body {
-    height: 200vh;
+.main {
+    background-color: aqua;
+    height: 100px;
+}
+
+.left-content {
+    background-color: blueviolet;
+    height: 100px;
+}
+
+.posts {
+    background-color: chartreuse;
+    height: 100px;
+}
+
+.posts-image {
+    background-color: beige;
+    height: 100px;
+}
+
+.posts-title {
+    height: 100px;
+    background-color: burlywood;
+}
+
+.title-category {
+    background-color: chocolate;
+    height: 50px;
+}
+
+.image-top10 {
+    height: 60px;
+    background-color: dimgray;
+}
+
+.title-top10 {
+    background-color: darkolivegreen;
+    height: 60px;
 }

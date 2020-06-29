@@ -46,11 +46,16 @@ router.post('/', async(req, res) => {
         req.body.time_up = await new Date();
         await req.body.time_up.setDate(req.body.time_up.getDate() + 7);
         await req.body.time_up.setMinutes(req.body.time_up.getMinutes() + hcm_upset);
+        // d = new Date();
+        // req.body.time_up = d.toLocalString();
+        console.log(req.body.time_up);
+        //create id
         await getAccountID().then(value => {
             req.body.accID = value;
         });
-        console.log(req.body);
         await accModel.add(req.body);
+
+        //ERROR login
         req.session.authUser = req.body;
         req.session.isLogin = true;
         res.redirect('/');
