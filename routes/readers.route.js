@@ -10,6 +10,9 @@ router.get('/', async(req, res) => {
         isLogin: res.locals.lcLogin
     });
 });
+router.get('/posts', (req, res) => {
+    res.render('readers/posts');
+});
 router.post('/logout', function(req, res) {
     req.session.isLogin = false;
     req.session.authUser = null;
