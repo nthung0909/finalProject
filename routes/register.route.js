@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const accModel = require('../models/users.model');
-const hcm_upset = 7.0 * 60;
+//const hcm_upset = 7.0 * 60;
 
 router.get('/', async(req, res) => {
     res.render('register/register', {
@@ -45,10 +45,9 @@ router.post('/', async(req, res) => {
         req.body.type = 4;
         req.body.time_up = await new Date();
         await req.body.time_up.setDate(req.body.time_up.getDate() + 7);
-        await req.body.time_up.setMinutes(req.body.time_up.getMinutes() + hcm_upset);
-        // d = new Date();
-        // req.body.time_up = d.toLocalString();
-        console.log(req.body.time_up);
+        //await req.body.time_up.setMinutes(req.body.time_up.getMinutes() + hcm_upset);
+
+
         //create id
         await getAccountID().then(value => {
             req.body.accID = value;

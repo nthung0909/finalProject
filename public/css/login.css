@@ -30,6 +30,7 @@ nav {
     width: 100vh;
     background-size: cover;
     height: 100vh;
+    top: 10vh
 }
 
 .header-formLogin {
@@ -49,6 +50,11 @@ nav {
     padding-top: 3px;
     width: 100%;
     outline: none;
+}
+
+.form {
+    top: 1vh;
+    border: 1px solid #dee2e6;
 }
 
 .bodyForm {
@@ -79,4 +85,17 @@ nav {
 .warning {
     font-size: 15;
     color: red;
+}
+
+@media (max-width: 767px) {
+    .header-formLogin {
+        text-align: center;
+        width: 100%;
+    }
+    .bgLogin {
+        background-image: none;
+    }
+    .form {
+        border: none;
+    }
 }

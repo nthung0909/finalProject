@@ -16,34 +16,52 @@
 
 <body>
     <div class="container-fluid bgLogin">
-        <div class="row position-relative" style="top:10vh">
+        <div class="row position-relative" >
             <div class="col-sm-4">
             </div>
-            <div class="col-sm-4 border" style="background-color:white">
+            <div class="col-sm-4 form" style="background-color:white">
                 <form action="/login" method="POST" name="loginForm">
                     {{!-- onsubmit="return validateForm('{{account}}');" --}}
                     <div class="header-formLogin">
-                        <h1>Login</h1>
+                        <h1>Sign in</h1>
                     </div>
                     <div class="bodyForm">
-                        <div class="wrap-input row">
-                            <div class="col-sm-2">
-                                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                        <div class="wrap-input row p-0 m-0">
+                            <div class="col-12 justify-content-center">
+                                <a class="Oauth" href="/login/facebook">
+                                <button type="button" style="background-color: rgb(45, 67, 115);color:white" class="btn btn-block ">
+                                    Sign in with Facebook
+                                </button>
+                                </a>
                             </div>
-                            <div class="col-sm-10">
-                                <input type="text" style="border: none;" id="fname" name="fname"
-                                    placeholder="Type your username" autofocus required>
+                        </div>
+                        <div class="wrap-input row p-0 m-0">
+                            <div class="col-12 justify-content-center">
+                                <a class="Oauth" href="/login/google">
+                                <button type="button" style="background-color: rgb(234, 67, 53);color:white" class="btn btn-block ">
+                                    Sign in with Google
+                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="wrap-input row">
-                            <div class="col-sm-2 pb-0 mb-0">
-                                <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
+                            <div class="col-2">
+                                <i class="fa fa-user icon" aria-hidden="true"></i>
                             </div>
-                            <div class="col-sm-10 pb-0 mb-0">
+                            <div class="col-10">
+                                <input type="text" style="border: none;" id="fname" name="fname"
+                                    placeholder="Username" autofocus required>
+                            </div>
+                        </div>
+                        <div class="wrap-input row">
+                            <div class="col-2 pb-0 mb-0">
+                                <i class="fa fa-lock icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10 pb-0 mb-0">
                                 <input type="password" style="border: none;" id="fpw" name="fpw"
-                                    placeholder="Type your password" onfocus="resetPW();" required>
+                                    placeholder="Password" onfocus="resetPW();" required>
                             </div>
-                            <div class="col-sm-12 text-right forgot-pw">
+                            <div class="col-12 text-right forgot-pw">
                                 <a href="#"><i class="text-muted">forgot your password?</i></a>
                             </div>
                         </div>
