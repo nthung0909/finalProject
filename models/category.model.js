@@ -3,13 +3,13 @@ const TBL_CATE = 'categories';
 
 module.exports = {
     all: () => {
-        return db.load(`select * from ${TBL_CATE} order by catID`);
+        return db.load(`select * from ${TBL_CATE}`);
     },
     single: (id) => {
-        return db.load(`select*from ${TBL_CATE} where accID="${id}"`);
+        return db.load(`select*from ${TBL_CATE} where catID="${id}"`);
     },
-    singleByUsername: (usn) => {
-        return db.load(`select*from ${TBL_CATE} where username="${usn}"`);
+    singleByUsername: (catname) => {
+        return db.load(`select*from ${TBL_CATE} where catName=N"${catname}"`);
     },
     patch: (entity) => {
         const condition = {

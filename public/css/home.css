@@ -53,14 +53,15 @@
     height: 100vmin;
 }
 
-.main {
-    background-color: aqua;
-    height: 100px;
+.main {}
+
+.content-title {
+    color: red;
+    border-left: red solid 4px;
 }
 
 .left-content {
-    background-color: blueviolet;
-    height: 100px;
+    background-color: #8a2be2;
 }
 
 .posts {
@@ -78,17 +79,36 @@
     background-color: burlywood;
 }
 
-.title-category {
-    background-color: chocolate;
-    height: 50px;
-}
-
 .image-top10 {
-    height: 60px;
-    background-color: dimgray;
+    min-height: 6.25vw;
 }
 
 .title-top10 {
-    background-color: darkolivegreen;
-    height: 60px;
+    font-size: 18px;
+}
+
+.title-top10 a {
+    text-decoration: none;
+    color: #212529;
+}
+
+.title-top10 a:hover {
+    color: #2fa1b3;
+}
+
+.avatar:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: .5s ease;
+}
+
+.sub-title {
+    font-size: 15px;
+    color: rgb(177, 177, 177);
+}
+
+.sub-title a {
+    color: rgb(177, 177, 177);
+    text-decoration: none;
 }

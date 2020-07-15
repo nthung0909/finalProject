@@ -1,34 +1,97 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12 title-category">
-            Category
-        </div>
+<div class="container pt-3">
+    <div class="row p-0">
         <div class="col-8 main">
-            <div class="row posts">
-                <div class="col-4 posts-image">
-                    image
-                </div>
-                <div class="col-8 posts-title">
-                    title
-                </div>
-            </div>
-            <div class="row posts">
-                <div class="col-4 posts-image">
-                    image
-                </div>
-                <div class="col-8 posts-title">
-                    title
-                </div>
-            </div>
-        </div>
-        <div class="col-4 left-content">
+            {{!-- bài viết nổi bật trong tuần --}}
             <div class="row">
-                <div class="col-3 image-top10">
-                    image-top10
+                <div class="col-12 content-title">
+                    <h4>Bài viết nổi bật</h4>
                 </div>
-                <div class="col-9 title-top10">
-                    title-top10
+            </div>
+            <p></p>
+            <div class="row">
+                {{#each topweek}}
+                <div class="col-4 pl-0">
+                    <a href="/posts?id={{postsID}}">
+                        <img class="rounded avatar" src="{{small_avatar}}" alt="{{title}}" width="100%">
+                    </a>
+                    <div class="title-top10">
+                        <a href="/posts?id={{postsID}}">{{title}}</a>
+                    </div>
+                    <br>
+                    <div class="col-12 sub-title p-0">
+                        <a href="/category/?id={{catID}}"><span>{{catName}}</span></a>
+                        &nbsp;&nbsp;&nbsp;<span>01/01/20</span>
+                    </div>
                 </div>
+                {{/each}}
+            </div>
+            <hr>
+
+            {{!-- 10 bài viết mới nhất --}}
+            <div class="row">
+                <div class="col-12 content-title">
+                    <h4>Bài viết mới nhất</h4>
+                </div>
+            </div>
+            <p></p>
+            <div class="row">
+                {{#each newpost}}
+                <div class="col-4 mb-3">
+                    <a href="/posts?id={{postsID}}">
+                        <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-8 p-0">
+                    <div class="title-top10">
+                        <a href="/posts?id={{postsID}}">
+                            <h4>{{title}}</h4>
+                        </a>
+                    </div>
+                    <div class="sub-title">
+                        <a href="/category/?id={{catID}}"><span>{{catName}}</span></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <span>01/01/20</span>
+                    </div>
+
+                </div>
+                {{/each}}
+            </div>
+            <hr>
+
+            {{!-- Hiển thị top 10 chuyên mục, mỗi chuyên mục 1 bài mới nhất --}}
+
+
+
+            {{!-- top 10 bài báo được xem nhiều nhất --}}
+
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12 ml-3 content-title">
+                    <h4>Xem nhiều</h4>
+                </div>
+                <p></p>
+                {{#each this.topview}}
+                <div class="row pl-5">
+                    <div class="col-3 image-top10 mb-2 p-0">
+                        <a href="/posts?id={{title}}">
+                            <img class="rounded avatar img-fluid" src="{{small_avatar}}" alt="{{title}}">
+                        </a>
+                    </div>
+                    <div class="col-9 title-top10 mb-2">
+                        <div class="title-top10">
+                            <a href="/posts?id={{postsID}}">
+                                <span>{{title}}</span>
+                            </a>
+                        </div>
+                        <div class="col-12 d-flex justify-content-between sub-title p-0">
+                            <a href="/category/?id={{catID}}"><span>{{catName}}</span></a>
+                            <span>01/01/20</span>
+                            <span>{{views}}&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
     </div>

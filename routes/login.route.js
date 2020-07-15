@@ -11,10 +11,12 @@ router.use(passport.session());
 
 //setup login with google
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-router.get('/google/callback', passport.authenticate('google', {
-    failureRedirect: '/login',
-    successRedirect: '/'
-}));
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
+    (req, res) => {
+        req.session.isLogin = true;
+        req.session.authUser = req.user;
+        res.redirect('/');
+    });
 
 router.get('/', redi.redirectAuthUser, (req, res) => {
     res.render('login/login', {
@@ -41,7 +43,7 @@ router.post('/', async(req, res) => {
     return res.redirect('/login');
 });
 router.post('/logout', function(req, res) {
-    req.session.isLogin = false;
+    req.session.isLogin = undefined;
     res.locals.lcAuthUser = null;
     req.session.passport = null;
     res.redirect(req.headers.referer);
