@@ -25,7 +25,7 @@ router.get('/', redi.redirectAuthUser, (req, res) => {
     });
 });
 
-router.post('/', async(req, res) => {
+router.post('/', async (req, res) => {
     const user = await accModel.singleByUsername(req.body.fname);
     if (user[0]) {
         if (bcrypt.compareSync(req.body.fpw, user[0].password)) {
@@ -42,7 +42,7 @@ router.post('/', async(req, res) => {
     req.session.isLogin = false;
     return res.redirect('/login');
 });
-router.post('/logout', function(req, res) {
+router.post('/logout', function (req, res) {
     req.session.isLogin = undefined;
     res.locals.lcAuthUser = null;
     req.session.passport = null;

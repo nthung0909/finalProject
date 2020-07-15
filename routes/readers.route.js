@@ -4,7 +4,7 @@ const cateModel = require('../models/category.model');
 const posts = require('../models/posts.model');
 const router = exppress.Router();
 
-router.get('/', async(req, res) => {
+router.get('/', async (req, res) => {
     // const cate = await cateModel.all();
     const top10 = await posts.getTopView(10);
     top10.forEach(item => delete item.content);
@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
         newpost: newpost
     });
 });
-router.get('/posts', async(req, res) => {
+router.get('/posts', async (req, res) => {
     console.log(req.query.id);
     const news = await posts.single(req.query.id);
     console.log(news[0]);
@@ -27,7 +27,7 @@ router.get('/posts', async(req, res) => {
     });
 
 });
-router.post('/logout', function(req, res) {
+router.post('/logout', function (req, res) {
     req.session.isLogin = false;
     req.session.authUser = null;
     res.redirect(req.headers.referer);
