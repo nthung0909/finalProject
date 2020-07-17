@@ -17,6 +17,17 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
         req.session.authUser = req.user;
         res.redirect('/');
     });
+//login with facebook
+router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    (req, res) => {
+        req.session.isLogin = true;
+        req.session.authUser = req.user;
+        return res.redirect('/');
+    }
+);
+
+
 
 router.get('/', redi.redirectAuthUser, (req, res) => {
     res.render('login/login', {
@@ -45,7 +56,7 @@ router.post('/', async(req, res) => {
 router.post('/logout', function(req, res) {
     req.session.isLogin = undefined;
     res.locals.lcAuthUser = null;
-    req.session.passport = null;
+    //req.session.passport = null;
     res.redirect(req.headers.referer);
 })
 module.exports = router;

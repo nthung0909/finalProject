@@ -10,17 +10,17 @@ module.exports = {
         return db.load(`select*from ${TBL_POSTS} where postsID="${id}"`);
     },
     getTopView: (top) => {
-        return db.load(`select p.postsID,p.title,c.catName,p.small_avatar,p.views 
+        return db.load(`select p.postsID,p.title,c.catID,c.catName,p.small_avatar,p.views 
                         from ${TBL_POSTS} p,${TBL_CATE} c 
                         WHERE p.catID=c.catID order by views DESC LIMIT ${top}`);
     },
     topWeek(top) {
-        return db.load(`select p.postsID,p.title,c.catName,p.small_avatar,p.views 
+        return db.load(`select p.postsID,p.title,c.catID,c.catName,p.small_avatar,p.views 
         from ${TBL_POSTS} p,${TBL_CATE} c 
         WHERE p.catID=c.catID order by views DESC LIMIT ${top}`);
     },
     newpost(top) {
-        return db.load(`select p.postsID,p.title,c.catName,p.small_avatar,p.views 
+        return db.load(`select p.postsID,p.title,c.catID,c.catName,p.small_avatar,p.views 
         from ${TBL_POSTS} p,${TBL_CATE} c 
         WHERE p.catID=c.catID order by date DESC LIMIT ${top}`);
     },

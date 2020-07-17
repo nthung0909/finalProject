@@ -69,24 +69,11 @@
           <li class="nav-item">
             <a class="nav-link active" href="/">HOME</a>
           </li>
+          {{#each cate}}
           <li class="nav-item">
-            <a class="nav-link" href="/?cate=congnghe">Công nghệ</a>
+            <a class="nav-link" href="/category?cate={{catID}}">{{catName}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/?cate=vanhoa">Văn hóa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/?cate=xahoi">Xã hội</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/?cate=thethao">Thể thao</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/?cate=yte">Y Tế</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/?cate=giaoduc">Giáo dục</a>
-          </li>
+          {{/each}}
         </ul>
       </div>
     </div>

@@ -99,3 +99,7 @@ nav {
         border: none;
     }
 }
+
+.bodyForm a:hover {
+    text-decoration: none;
+}
