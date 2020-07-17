@@ -3,7 +3,7 @@ const router = express.Router();
 const accModel = require('../models/users.model');
 //const hcm_upset = 7.0 * 60;
 
-router.get('/', async(req, res) => {
+router.get('/', async (req, res) => {
     res.render('register/register', {
         layout: false
     });
@@ -27,7 +27,7 @@ async function getAccountID() {
     }
     return tmp;
 }
-router.post('/', async(req, res) => {
+router.post('/', async (req, res) => {
     var acc = await accModel.all();
     var exists = await acc.find(item => {
         return item.username === req.body.username;
