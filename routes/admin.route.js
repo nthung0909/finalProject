@@ -2,10 +2,10 @@ const express = require('express');
 const redi = require('../middlewares/auth.mdw');
 const router = express.Router();
 
-router.get('/', redi.redirectLogin, (req, res) => {
+router.get('/', (req, res) => {
     res.render('admin/home', {
         authUser: res.locals.lcAuthUser,
-        isLogin: req.session.lcLogin
+        isAdmin:true
     });
 });
 
