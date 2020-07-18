@@ -112,3 +112,7 @@
     color: rgb(177, 177, 177);
     text-decoration: none;
 }
+
+img {
+    max-width: 100%;
+}
