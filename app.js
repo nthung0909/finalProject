@@ -22,8 +22,8 @@ require('./middlewares/locals.mdw')(app);
 app.use('/', require('./routes/readers.route'));
 app.use('/login', require('./routes/login.route'));
 app.use('/register', require('./routes/register.route'));
-app.use('/admin', require('./routes/admin.route'));
-app.use('/view', require('./routes/admin.route'));
+app.use('/admin', require('./routes/admin/accounts.route'));
+app.use('/admin/categories',require('./routes/admin/categories.router'));
 app.listen(PORT, (req, res) => {
     console.log(`app is running at http:${PORT}`);
 });

@@ -46,8 +46,6 @@ router.post('/', async (req, res) => {
         req.body.time_up = await new Date();
         await req.body.time_up.setDate(req.body.time_up.getDate() + 7);
         //await req.body.time_up.setMinutes(req.body.time_up.getMinutes() + hcm_upset);
-
-
         //create id
         await getAccountID().then(value => {
             req.body.accID = value;
