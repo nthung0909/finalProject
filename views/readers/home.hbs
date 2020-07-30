@@ -60,11 +60,36 @@
             <hr>
 
             {{!-- Hiển thị top 10 chuyên mục, mỗi chuyên mục 1 bài mới nhất --}}
+            <div class="row">
+                <div class="col-12 content-title">
+                    <h4>Bài viết - chuyên mục</h4>
+                </div>
+            </div>
+            <p></p>
+            <div class="row">
+                 {{#each posts_cate}}
+                <div class="col-4 mb-3">
+                    <a href="/posts?id={{postsID}}">
+                        <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                    </a>
+                </div>
+                <div class="col-8 p-0">
+                    <div class="title-top10">
+                        <a href="/posts?id={{postsID}}">
+                            <h4>{{title}}</h4>
+                        </a>
+                    </div>
+                    <div class="sub-title">
+                        <a href="/category/?catID={{catID}}"><span>{{catName}}</span></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <span>01/01/20</span>
+                    </div>
 
-
+                </div>
+                {{/each}}
+            </div>
 
             {{!-- top 10 bài báo được xem nhiều nhất --}}
-
         </div>
         <div class="col-4">
             <div class="row">

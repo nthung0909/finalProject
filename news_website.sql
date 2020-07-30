@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `accID` char(6) COLLATE utf8_unicode_ci NOT NULL,
+  `accID` char(100) COLLATE utf8_unicode_ci NOT NULL,
   `fullname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `username` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password` char(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` char(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` char(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,  
   `time_up` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -48,9 +48,7 @@ INSERT INTO `account` (`accID`, `fullname`, `username`, `password`, `email`, `ty
 ('000003', 'Nguyễn Xuân Trường', 'approver', '123', 'approver@gmail.com', 3, '0000-00-00 00:00:00'),
 ('000004', 'Nguyễn Trọng Hùng', 'norAcc', '123', 'hung@gmail.com', 4, '0000-00-00 00:00:00'),
 ('000005', 'Trần Trọng Trí', 'preAcc', '123', 'tri@gmail.com', 4, '2020-06-30 08:20:00'),
-('000006', 'Trần Minh Tuấn', 'preAcc1', '123', 'tuan@gmail.com', 4, '2020-07-29 23:41:00'),
-('000007', 'trí trọng', 'TRI', '123456', 'trongtri0579@gmail.com', 4, '2020-07-06 21:37:38'),
-('000008', 'trí trọng', 'tri', '1234567', 'trongtri0579@gmail.com', 4, '2020-07-22 20:25:24');
+('000006', 'Trần Minh Tuấn', 'preAcc1', '123', 'tuan@gmail.com', 4, '2020-07-29 23:41:00');
 
 -- --------------------------------------------------------
 

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const accModel = require('../models/users.model');
+const brypt = require('bcryptjs');
 //const hcm_upset = 7.0 * 60;
 
-router.get('/', async (req, res) => {
+router.get('/', async(req, res) => {
     res.render('register/register', {
         layout: false
     });
@@ -27,7 +28,7 @@ async function getAccountID() {
     }
     return tmp;
 }
-router.post('/', async (req, res) => {
+router.post('/', async(req, res) => {
     var acc = await accModel.all();
     var exists = await acc.find(item => {
         return item.username === req.body.username;
@@ -42,6 +43,7 @@ router.post('/', async (req, res) => {
         delete req.body.firstname;
         delete req.body.lastname;
         delete req.body.confirmpassword;
+
         req.body.type = 4;
         req.body.time_up = await new Date();
         await req.body.time_up.setDate(req.body.time_up.getDate() + 7);

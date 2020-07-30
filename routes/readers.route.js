@@ -11,13 +11,20 @@ router.get('/', async(req, res) => {
     const hightlight = await posts.topWeek(3);
     const newpost = await posts.newpost(10);
     const cate = await cateModel.all();
+    const posts_of_each_cate = await posts.posts_of_each_categories();
+    //console.log(posts_of_each_cate);
     res.render('readers/home', {
         authUser: res.locals.lcAuthUser,
         isLogin: res.locals.lcLogin,
         topview: top10,
         topweek: hightlight,
         newpost: newpost,
-        cate: cate
+        cate: cate,
+        posts_cate: posts_of_each_cate,
+        helpers: {
+            foo: function() { return cate; },
+            bar: function() { return hightlight; }
+        }
     });
 });
 router.get('/posts', async(req, res) => {

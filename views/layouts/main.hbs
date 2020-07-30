@@ -154,7 +154,6 @@
     
               <!-- Nav Item - Messages -->
               <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-    
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
@@ -251,6 +250,14 @@
             <a class="nav-link" href="/category?cate={{catID}}">{{catName}}</a>
           </li>
           {{/each}}
+          {{!-- {{#each foo}}
+            <li class="nav-item">
+              <a class="nav-link" href="/category?cate={{catID}}">{{catName}}</a>
+            </li>
+            {{#each ./bar}}
+              {{bar}}
+            {{/each}}
+          {{/each}} --}}
         </ul>
       </div>
   </div>
