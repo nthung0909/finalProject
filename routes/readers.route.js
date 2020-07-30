@@ -1,6 +1,7 @@
 const exppress = require('express');
 const redi = require('../middlewares/auth.mdw');
 const cateModel = require('../models/category.model');
+const usersModel = require('../models/users.model');
 const posts = require('../models/posts.model');
 const router = exppress.Router();
 
@@ -37,6 +38,16 @@ router.get('/posts', async(req, res) => {
         cate: cate
     });
 });
+
+router.get('/profile', redi.redirectLogin, async(req, res) => {
+    const id = req.query.id;
+    console.log(req.query);
+    const user = await usersModel.single(id);
+    console.log(user)
+    res.render('readers/posts', {
+        user: user[0]
+    });
+})
 router.post('/logout', function(req, res) {
     req.session.isLogin = false;
     req.session.authUser = null;

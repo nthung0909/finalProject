@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const accModel = require('../models/users.model');
-const brypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 //const hcm_upset = 7.0 * 60;
 
 router.get('/', async(req, res) => {
@@ -43,7 +43,7 @@ router.post('/', async(req, res) => {
         delete req.body.firstname;
         delete req.body.lastname;
         delete req.body.confirmpassword;
-
+        brypt
         req.body.type = 4;
         req.body.time_up = await new Date();
         await req.body.time_up.setDate(req.body.time_up.getDate() + 7);

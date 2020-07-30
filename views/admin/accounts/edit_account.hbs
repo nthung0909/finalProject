@@ -1,0 +1,42 @@
+<form method="POST" >
+  <div class="form-group">
+    <label for="exampleInputPassword1">accID</label>
+    <input type="text" class="form-control" id="txtaccID" name="accID" readonly value="{{this.account.accID}}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">fullname</label>
+    <input type="text" class="form-control" id="txtfullname" name="fullname" value="{{this.account.fullname}}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="pw" name="password" value="{{this.account.password}}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Type</label>
+  {{!-- <input type="text" class="form-control" id="txttype" name="type" value="{{this.account.type}}"> --}}
+
+      <select class="form-control" id="type" name="type">
+      <option value="4">Reader</option>
+      <option value="2">Writer</option>
+      <option value="3">Approved</option>
+      <option value="1">Admin</option>
+    </select> 
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">User name</label>
+    <input disabled class="form-control" id="txtuser" name="username" value="{{this.account.username}}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="email" value="{{this.account.email}}" name="email" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div> 
+  
+  <a  class="btn btn-success" href="/admin/accounts" role="button">
+            <i class="fa fa-backward" aria-hidden="true"></i>
+  </a> 
+  <button type="submit" class="btn btn-primary" formaction="/admin/accounts/update">Update Account</button>
+  <button type="submit"  class="btn btn-danger" title="Remove Account" formaction="/admin/accounts/del">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+  </button>
+</form>

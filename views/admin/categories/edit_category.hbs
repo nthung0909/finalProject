@@ -1,0 +1,25 @@
+<form method="POST" >
+   <div class="form-group">
+    <label for="exampleInputEmail1">catID</label>
+    <input type="text" class="form-control" id="txtcatID"  name="catID" readonly 
+    value="{{this.category.catID}}" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">catName</label>
+    <input type="text" class="form-control" id="txtcatName" name="catName" 
+    value="{{this.category.catName}}" autofocus >
+  </div>
+ 
+  <div>
+      
+      <a  class="btn btn-success" href="/admin/categorys" role="button">
+            <i class="fa fa-backward" aria-hidden="true"></i>
+      </a>
+      <button type="submit"  class="btn btn-primary" formaction="/admin/categorys/update">update</button>
+      <button type="submit"  class="btn btn-danger" title="Remove Category" formaction="/admin/categorys/del">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+  </div>
+  
+  
+</form>
