@@ -17,17 +17,19 @@ router.get('/', async (req, res) => {
         isLogin: res.locals.lcLogin,
         topview: top10,
         topweek: hightlight,
-        newpost: newpost
+        newpost: newpost,
+        cate: cate
     });
 });
 router.get('/posts', async (req, res) => {
-    console.log(req.query.id);
     const news = await posts.single(req.query.id);
-    console.log(news[0]);
+    const cate = await cateModel.all();
     res.render('readers/posts', {
-        _posts: news[0]
+        authUser: res.locals.lcAuthUser,
+        isLogin: res.locals.lcLogin,
+        _posts: news[0],
+        cate: cate
     });
-
 });
 
 router.get('/profile', redi.redirectLogin, async (req, res) => {
@@ -43,5 +45,5 @@ router.post('/logout', function (req, res) {
     req.session.isLogin = false;
     req.session.authUser = null;
     res.redirect(req.headers.referer);
-})
+});
 module.exports = router;

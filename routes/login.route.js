@@ -17,6 +17,17 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
         req.session.authUser = req.user;
         res.redirect('/');
     });
+//login with facebook
+router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    (req, res) => {
+        req.session.isLogin = true;
+        req.session.authUser = req.user;
+        return res.redirect('/');
+    }
+);
+
+
 
 router.get('/', redi.redirectAuthUser, (req, res) => {
     res.render('login/login', {
@@ -25,7 +36,7 @@ router.get('/', redi.redirectAuthUser, (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', async(req, res) => {
     const user = await accModel.singleByUsername(req.body.fname);
     if (user[0]) {
         if (bcrypt.compareSync(req.body.fpw, user[0].password)) {
@@ -42,10 +53,10 @@ router.post('/', async (req, res) => {
     req.session.isLogin = false;
     return res.redirect('/login');
 });
-router.post('/logout', function (req, res) {
+router.post('/logout', function(req, res) {
     req.session.isLogin = undefined;
     res.locals.lcAuthUser = null;
-    req.session.passport = null;
+    //req.session.passport = null;
     res.redirect(req.headers.referer);
 })
 module.exports = router;

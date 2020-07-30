@@ -1,0 +1,52 @@
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <h class="h3 mb-0 text-gray-800">Dashboard</h>
+    <h1>
+        <a name="" id="aa" class="btn btn-outline-success" href="/admin/accounts/detailAdd" role="button">
+           Add Account
+           <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </h1>
+</div>
+<div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">FullName</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Password</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col" >Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each accounts}}
+    <tr>
+      <td>{{accID}}</td>
+      <td>{{fullname}}</td>
+      <td>{{username}}</td>
+      <td>{{password}}</td>
+      <td>{{email}}</td>
+      <td>{{type}}</td>
+      <td><a href="/admin/accounts/detail?id={{accID}}"><button class="btn btn-primary" type="submit">
+          Edit &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+<!-- Content Row -->
+<div class="row">
+    <!-- /.container-fluid -->
+</div>
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+        </div>
+    </div>
+</footer>
