@@ -10,7 +10,12 @@ var app = express();
 //type of file handlebars
 app.use(express.static('public'));
 app.engine('hbs', exphbs({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        foo: function(param) {
+            return "abc" + param;
+        }
+    }
 }));
 app.set('view engine', 'hbs');
 //using form

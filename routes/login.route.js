@@ -38,6 +38,7 @@ router.get('/', redi.redirectAuthUser, (req, res) => {
 
 router.post('/', async(req, res) => {
     const user = await accModel.singleByUsername(req.body.fname);
+    console.log(bcrypt.hash(user[0].password));
     if (user[0]) {
         if (bcrypt.compareSync(req.body.fpw, user[0].password)) {
             req.session.isLogin = true;

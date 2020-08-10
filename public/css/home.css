@@ -53,8 +53,6 @@
     height: 100vmin;
 }
 
-.main {}
-
 .content-title {
     color: red;
     border-left: red solid 4px;
@@ -93,6 +91,7 @@
 }
 
 .title-top10 a:hover {
+    text-decoration: none;
     color: #2fa1b3;
 }
 

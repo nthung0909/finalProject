@@ -2,7 +2,6 @@ const passport = require('passport');
 const config = require('../config/default.json');
 const users = require('../models/users.model');
 
-
 //login with google
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
