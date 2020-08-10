@@ -2,9 +2,11 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 
 process.env.TZ = 'Asia/Ho_Chi_Minh';
-var timezone = process.env.TZ;
 var PORT = 3000 | process.env.PORT; //port enviroment
 var app = express();
+
+
+
 //type of file handlebars
 app.use(express.static('public'));
 app.engine('hbs', exphbs({
@@ -19,11 +21,12 @@ app.use(express.urlencoded({
 require('./middlewares/session.mdw')(app);
 require('./middlewares/locals.mdw')(app);
 
-app.use('/', require('./routes/readers.route'));
+app.use('/', require('./routes/reader/readers.route'));
 app.use('/login', require('./routes/login.route'));
 app.use('/register', require('./routes/register.route'));
 app.use('/admin', require('./routes/admin/accounts.route'));
-app.use('/admin/categories',require('./routes/admin/categories.router'));
+app.use('/admin/categories', require('./routes/admin/categories.router'));
+app.use('/profile', require('./routes/reader/profile.route'));
 app.listen(PORT, (req, res) => {
     console.log(`app is running at http:${PORT}`);
 });

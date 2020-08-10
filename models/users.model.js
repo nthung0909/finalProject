@@ -32,6 +32,8 @@ module.exports = {
         }
         console.log(condition); 
         return db.del(TBL_ACC, condition);
-    }
+    },
+    
+
     
 }

@@ -1,8 +1,8 @@
 const exppress = require('express');
-const redi = require('../middlewares/auth.mdw');
-const cateModel = require('../models/category.model');
-const usersModel = require('../models/users.model');
-const posts = require('../models/posts.model');
+const redi = require('../../middlewares/auth.mdw');
+const cateModel = require('../../models/category.model');
+const usersModel = require('../../models/users.model');
+const posts = require('../../models/posts.model');
 const router = exppress.Router();
 
 router.get('/', async (req, res) => {
@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
     top10.forEach(item => delete item.content);
     const hightlight = await posts.topWeek(3);
     const newpost = await posts.newpost(10);
-    console.log(res.locals.lcAuthUser);
+    const cate = await cateModel.all();
+
     res.render('readers/home', {
         authUser: res.locals.lcAuthUser,
         isLogin: res.locals.lcLogin,
@@ -32,15 +33,7 @@ router.get('/posts', async (req, res) => {
     });
 });
 
-router.get('/profile', redi.redirectLogin, async (req, res) => {
-    const id = req.query.id;
-    console.log(req.query);
-    const user = await usersModel.single(id);
-    console.log(user)
-    res.render('readers/posts', {
-        user: user[0]
-    });
-})
+
 router.post('/logout', function (req, res) {
     req.session.isLogin = false;
     req.session.authUser = null;

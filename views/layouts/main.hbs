@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/admin/home.css">
+  {{#each style}}
+  <link rel="stylesheet" href="{{css}}">
+  {{/each}}
 </head>
 
 <body>
@@ -42,7 +45,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tiện ích:</h6>
-            <a class="collapse-item" href="">Danh sách bài viết</a>
+            <a class="collapse-item" href="/admin/categories/list">Danh sách bài viết</a>
             <a class="collapse-item" href="">Đăng bài</a>
             <a class="collapse-item" href="">Quản lý nhãn (tag)</a>
           </div>
@@ -58,10 +61,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tiện ích:</h6>
-            <a class="collapse-item" href="index.html">Danh sách</a>
-            <a class="collapse-item" href="index.html">Tạo tài khoản</a>
-            <a class="collapse-item" href="index.html">Sửa</a>
-            <a class="collapse-item" href="index.html">Cập Nhật</a>
+            <a class="collapse-item" href="/admin/accounts/list">Danh sách</a>
+            <a class="collapse-item" href="/admin/accounts/add">Tạo tài khoản</a>
+            {{!-- <a class="collapse-item" href="index.html">Sửa</a>
+            <a class="collapse-item" href="index.html">Cập Nhật</a> --}}
           </div>
         </div>
       </li>
@@ -262,11 +265,139 @@
             {{{body}}}
           </div>
         </div>
-        <footer>
+        <!-- Footer -->
+        <footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
+
+          <!-- Footer Links -->
+          <div class="container text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Content -->
+                <h5 class="font-weight-bold text-uppercase mb-4">THÔNG TIN</h5>
+                <p>1760431 - Nguyễn Trọng Hùng</p>
+                <p>1760448 - Trần Trọng Trí</p>
+                <p>1760453 - Nguyễn Xuân Trường</p>
+                <p>1760458 - Trần Minh Tuấn</p>
+
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              {{!-- <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+
+                <ul class="list-unstyled">
+                  <li>
+                    <p>
+                      <a href="#!">PROJECTS</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#!">ABOUT US</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#!">BLOG</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#!">AWARDS</a>
+                    </p>
+                  </li>
+                </ul>
+
+              </div> --}}
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Contact details -->
+                <h5 class="font-weight-bold text-uppercase mb-4">ĐỊA CHỈ</h5>
+
+                <ul class="list-unstyled">
+                  <li>
+                    <p>
+                      <i class="fa  fa-map-marker  mr-3"></i> 227 Nguyễn Văn Cừ, Quận5 , Hồ Chí Minh</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-envelope mr-3"></i> nthung0909@gmail.com</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-phone mr-3"></i> + 0905 357 611</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-print mr-3"></i> + 0935 963 442</p>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+                <!-- Social buttons -->
+                <h5 class="font-weight-bold text-uppercase mb-4">LIÊN HỆ</h5>
+
+                <!-- Facebook -->
+                <p><a type="button" style="color:darkblue;" class="btn-floating btn-fb">
+                    <i class="fa fa-facebook-square fa-2x"></i>
+                  </a>
+                </p>
+                <!-- Twitter -->
+                <p><a type="button" style="color:#55acee;" class="btn-floating btn-tw">
+                    <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+
+                  </a>
+                </p>
+                <!-- Google +-->
+                <p> <a type="button" style="color: orangered;" class="btn-floating btn-gplus">
+                    <i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                </p>
+                <!-- Dribbble -->
+                <p> <a type="button" class="btn-floating btn-dribbble">
+                    <i class="fa fa-dribbble fa-2x" aria-hidden="true"></i>
+                  </a>
+                </p>
+
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+          </div>
+          <!-- Footer Links -->
+
         </footer>
+        <!-- Footer -->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/home.js"></script>
+        {{#each js}}
+        <script src="{{_js}}"></script>
+        {{/each}}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
           integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
           crossorigin="anonymous"></script>
