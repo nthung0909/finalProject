@@ -14,10 +14,8 @@
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/admin/home.css">
   {{#each style}}
-
   <link rel="stylesheet" href="{{css}}">
   {{/each}}
-  
 </head>
 
 <body>
@@ -195,8 +193,8 @@
                     <div class="col-lg-8 col-sm-12 col-md-10 p-0">
                       <div class="top-search pt-2">
                         <nav class="navbar navbar-light p-0">
-                          <form class="form-inline col-12 p-0" action="/">
-                            <input class="form-control mr-sm-2 col-10" type="search"
+                          <form class="form-inline col-12 p-0" action="/search" method="GET">
+                            <input class="form-control mr-sm-2 col-10" type="search" name="query"
                               placeholder="Nhập nội dung hoặc chủ đề..." aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                               <i class="fa fa-search" aria-hidden="true"></i></button>
@@ -238,24 +236,23 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="/">HOME</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=congnghe">Công nghệ</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=vanhoa">Văn hóa</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=xahoi">Xã hội</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=thethao">Thể thao</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=yte">Y Tế</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=giaoduc">Giáo dục</a>
-                  </li>
+                  {{#each cate}}
+                      <li class="nav-item">
+                        <div class="btn-group category">
+                          <button type="button" class="btn dropdown-toggle " data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{catName}}
+                          </button>
+                          <div class="dropdown-menu">
+                            {{#each ../detailCate}}
+                            {{#compareCatID catID ../catID }}
+                              <a class="dropdown-item" href="/search?cate={{../catName}}">{{../catName}}</a>
+                            {{/compareCatID}}
+                          {{/each}}
+                          </div>
+                        </div>
+                      </li>
+                  {{/each}}
                 </ul>
               </div>
             </div>
@@ -263,8 +260,134 @@
             {{{body}}}
           </div>
         </div>
-        <footer>
+        <!-- Footer -->
+        <footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
+
+          <!-- Footer Links -->
+          <div class="container text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Content -->
+                <h5 class="font-weight-bold text-uppercase mb-4">THÔNG TIN</h5>
+                <p>1760431 - Nguyễn Trọng Hùng</p>
+                <p>1760448 - Trần Trọng Trí</p>
+                <p>1760453 - Nguyễn Xuân Trường</p>
+                <p>1760458 - Trần Minh Tuấn</p>
+
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              {{!-- <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+
+                <ul class="list-unstyled">
+                  <li>
+                    <p>
+                      <a href="#!">PROJECTS</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#!">ABOUT US</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#!">BLOG</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a href="#!">AWARDS</a>
+                    </p>
+                  </li>
+                </ul>
+
+              </div> --}}
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Contact details -->
+                <h5 class="font-weight-bold text-uppercase mb-4">ĐỊA CHỈ</h5>
+
+                <ul class="list-unstyled">
+                  <li>
+                    <p>
+                      <i class="fa  fa-map-marker  mr-3"></i> 227 Nguyễn Văn Cừ, Quận5 , Hồ Chí Minh</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-envelope mr-3"></i> nthung0909@gmail.com</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-phone mr-3"></i> + 0905 357 611</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-print mr-3"></i> + 0935 963 442</p>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+                <!-- Social buttons -->
+                <h5 class="font-weight-bold text-uppercase mb-4">LIÊN HỆ</h5>
+
+                <!-- Facebook -->
+                <p><a type="button" style="color:darkblue;" class="btn-floating btn-fb">
+                    <i class="fa fa-facebook-square fa-2x"></i>
+                  </a>
+                </p>
+                <!-- Twitter -->
+                <p><a type="button" style="color:#55acee;" class="btn-floating btn-tw">
+                    <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+
+                  </a>
+                </p>
+                <!-- Google +-->
+                <p> <a type="button" style="color: orangered;" class="btn-floating btn-gplus">
+                    <i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
+                  </a>
+                </p>
+                <!-- Dribbble -->
+                <p> <a type="button" class="btn-floating btn-dribbble">
+                    <i class="fa fa-dribbble fa-2x" aria-hidden="true"></i>
+                  </a>
+                </p>
+
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+          </div>
+          <!-- Footer Links -->
+
         </footer>
+        <!-- Footer -->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         {{#each js}}
@@ -279,6 +402,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
           integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
           crossorigin="anonymous"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,4 @@
 const db = require('../utils/db');
-const { all } = require('./category.model');
 const TBL_ACC = 'account';
 const TBL_DETAIL_ACC ='detail_account';
 
@@ -34,13 +33,13 @@ module.exports = {
     add: (entity) => {
         return db.add(TBL_ACC, entity);
     },
-    del: function(id){
+    del: function(id) {
         console.log(id);
-        const condition ={
+        const condition = {
             accID: id
         }
-        console.log(condition); 
+        console.log(condition);
         return db.del(TBL_ACC, condition);
     }
-    
+
 }

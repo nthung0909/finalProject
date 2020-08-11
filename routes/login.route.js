@@ -12,17 +12,19 @@ router.use(passport.session());
 //setup login with google
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
-    (req, res) => {
+    async(req, res) => {
         req.session.isLogin = true;
-        req.session.authUser = req.user;
+        const user = await accModel.single(req.user.accID)
+        req.session.authUser = user[0];
         res.redirect('/');
     });
 //login with facebook
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
-    (req, res) => {
+    async(req, res) => {
         req.session.isLogin = true;
-        req.session.authUser = req.user;
+        const user = await accModel.single(req.user.accID)
+        req.session.authUser = user[0];
         return res.redirect('/');
     }
 );
