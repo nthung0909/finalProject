@@ -16,14 +16,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/categories', async(req, res) => {
-        const categorys = await adCategory.all();
-        res.render('admin/categorys/category_list', {
+    const categorys = await adCategory.all();
+    res.render('admin/categorys/category_list', {
             isAdmin: true,
             categorys: categorys
         })
-    })
-    // account////////////////////
-
+        // account////////////////////
+});
 router.get('/accounts/list', async(req, res) => {
     const accounts = await users.allWithNoAdmin();
     res.render('admin/accounts/account_list', {
@@ -53,7 +52,7 @@ router.post('/accounts/update', async(req, res) => {
     });
 
     await usersModel.patch(req.body);
-    res.redirect('/admin/accounts')
+    res.redirect('/admin/accounts/list');
 })
 router.post('/accounts/del', async(req, res) => {
         //console.log("Vo duoc day!");
@@ -105,8 +104,9 @@ router.post('/accounts/add', async(req, res) => {
         req.body.accID = value;
     });
     await console.log(req.body);
-    await usersModel.add(req.body);
+    const rs = await usersModel.add(req.body);
     //console.log(rs);
     res.redirect('/admin/accounts/list');
 })
+
 module.exports = router;
