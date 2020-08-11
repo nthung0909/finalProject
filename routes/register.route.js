@@ -43,16 +43,19 @@ router.post('/', async(req, res) => {
         delete req.body.firstname;
         delete req.body.lastname;
         delete req.body.confirmpassword;
-        brypt
         req.body.type = 4;
         req.body.time_up = await new Date();
         await req.body.time_up.setDate(req.body.time_up.getDate() + 7);
         //await req.body.time_up.setMinutes(req.body.time_up.getMinutes() + hcm_upset);
-
-
         //create id
         await getAccountID().then(value => {
             req.body.accID = value;
+        });
+        bcrypt.hash(req.body.password, 8, function(err, hash) {
+            if (err)
+                res.render('/404');
+            else
+                req.body.password = hash;
         });
         await accModel.add(req.body);
 

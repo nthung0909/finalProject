@@ -1,12 +1,138 @@
-<div class="row">
-    <div class="container p-5">
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            {{#if _posts}}
-            {{{_posts.content}}}
-            {{/if}}
+<div class="row m-0">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-2 col-md-0 col-sm-0"></div>
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="mb-2">
+                    <h1>{{_posts.title}}</h1>
+                    <br>
+                    <span class="path">
+                        <a href="/">Home</a> &nbsp; <i class="fa fa-caret-right" aria-hidden="true"></i> &nbsp;
+                        <a href="/?cate={{this.cateSingle.catName}}">{{this.cateSingle.catName}}</a> &nbsp; <i
+                            class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;
+                        <a href="/?cate={{this.detailSingleCate.catName}}">{{this.detailSingleCate.catName}}</a>
+                    </span>
+                </div>
+                <div class="writer">
+                    <div class="row pl-3 mb-2">
+                        <div class="col-lg-1 col-md-2 col-sm-2 p-0">
+                            <img src="{{this.writer.avatar}}" class="avatarUS"
+                                alt="">
+                        </div>
+                        <div class="col-lg-11 col-md-10 col-sm-10">
+                            <b class="name">{{this.writer.alias}}</b>
+                            <br>{{this._posts.date}}&nbsp;&nbsp;<i class="fa fa-circle fa-size" aria-hidden="true"></i>&nbsp;
+                            Bình luận: {{this.count_cmt}} &nbsp;<i class="fa fa-circle fa-size" aria-hidden="true"></i>&nbsp;
+                            Lượt xem: {{this._posts.views}}
+                        </div>
+                    </div>
+                    {{!-- <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <div>
+                            <img src="{{this.writer.avatar}}" width="50px" height="50px" style="border-radius: 50%;"alt="">
+                        </div>
+                    </li>
+                    <li class="list-inline-item posts_info" style="height:50px">
+                        <a href="/?writer={{this.writer.accID}}"><b>{{this.writer.alias}}</b></a> 
+                        <br>{{this._posts.date}}&nbsp;&nbsp;<i class="fa fa-circle" aria-hidden="true"></i>&nbsp;
+                        Bình luận: {{this.comments}} &nbsp;<i class="fa fa-circle" aria-hidden="true"></i>&nbsp;
+                        Lượt xem: {{this._posts.views}}
+                    </li>
+                </ul> --}}
+                </div>
+                <div class="content col-12">
+                    {{#if _posts}}
+                    {{{_posts.content}}}
+                    {{/if}}
+                </div>
+                <br><br>
+                <div class="col-12 tags">
+                    <span>
+                        <b>Tags: &nbsp;</b>
+                        {{#each tags}}
+                        <a href="/tag?tagID={{tagID}}"><button type="button btn-sm"
+                                class="btn btn-light">{{{tagID}}}</button></a>&nbsp;
+                        {{/each}}
+                    </span>
+                </div>
+                <hr>
+                <div class="col-12">
+                    <h5><b> Bài viết tương tự: </b></h5>
+                </div>
+                <br>
+                {{#each random}}
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <a href="/posts?id={{postsID}}">
+                            <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                        </a>
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="title-top10">
+                            <a href="/posts?id={{postsID}}">
+                                <h4>{{title}}</h4>
+                            </a>
+                        </div>
+                        <div class="sub-title">
+                            <a href="/category?catID={{catID}}"><span>{{catName}}</span></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>{{date}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <br>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h5><b> Bình luận: {{this.count_cmt}} lượt bình luận</b></h5>
+                    </div>
+                    <div class="col-12">
+                        <br>
+                        <div class="row">
+                            {{#if isLogin}}
+                            <div class="col-lg-1 col-sm-2 col-md-2 p-0">
+                                <img src="{{authUser.avatar}}" class="avatarUS" id="avatar"
+                                    alt="">
+                            </div>
+                                <form class="col-lg-11 col-md-2 col-sm-2" method="POST" name="commentForm">
+                                    <input type="text" id="accID" name="accID" value="{{authUser.accID}}" hidden>
+                                    <textarea class="form-control mb-2" id="comment" name="comment" rows="3"
+                                        placeholder="Để bình luận tại đây ..."></textarea>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" onclick="return sendComment();" class="btn btn-primary">Bình luận</button>
+                                    </div>
+                                </form>
+                            {{else}}
+                            <div class="col-lg-1 col-sm-2 col-md-2 p-0">
+                                <img src="/imgs/avatars/avatar.jpg" class="avatarUS"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-11 col-md-2 col-sm-2">
+                                <textarea class="form-control mb-1" rows="3" placeholder="Đăng nhập để bình luận ..."
+                                    readonly></textarea>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-12 comment p-0">
+                    {{#each comments}}
+                    <div class="row">
+                        <div class="col-lg-1 col-md-2 col-sm-2 p-0">
+                            <img src="{{authUser.avatar}}" class="avatarUS" alt="">
+                        </div>
+                        <div class="col-lg-11 col-md-10 col-sm-10 mb-3">
+                            {{fullname}}
+                            <br>
+                            {{content}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <br><br>
+            </div>
         </div>
     </div>
-</div>
 </div>

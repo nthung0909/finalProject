@@ -1,18 +1,15 @@
 const db = require('../utils/db');
-const TBL_ACC = 'account';
+const TBL_WRT = 'writer';
+const TBL_ACC = 'account'
 
 module.exports = {
     all: () => {
-        return db.load(`select * from ${TBL_ACC} order by accID`);
+        return db.load(`select * from ${TBL_ACC} where type=2 order by accID`);
     },
     single: (id) => {
-        return db.load(`select*from ${TBL_ACC} where accID="${id}"`);
-    },
-    singleByUsername: (usn) => {
-        return db.load(`select*from ${TBL_ACC} where username="${usn}"`);
-    },
-    allWithNoAdmin: () => {
-        return db.load(`select * from ${TBL_ACC} where type != 1 order by accID`);
+        return db.load(`select ac.accID,ac.fullname,ac.username,ac.avatar,ac.password,ac.email,ac.type,wr.alias as alias
+                        from ${TBL_ACC} ac,${TBL_WRT} wr 
+                        where wr.accID=ac.accID and ac.accID="${id}"`);
     },
     patch: (entity) => {
         const condition = {

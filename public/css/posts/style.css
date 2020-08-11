@@ -1,0 +1,28 @@
+.avatarUS {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgb(2, 186, 214);
+    border-width: 1px;
+}
+
+.path {
+    font-size: 15px;
+}
+
+.path a {
+    color: rgb(121, 118, 118);
+}
+
+.path a:hover {
+    text-decoration: none;
+}
+
+.fa-size {
+    font-size: 10px;
+}
+
+.name {
+    color: rgb(2, 186, 214);
+}

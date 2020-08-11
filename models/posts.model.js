@@ -8,20 +8,25 @@ module.exports = {
         return db.load(`select * from ${TBL_POSTS}`);
     },
     single: (id) => {
-        return db.load(`select*from ${TBL_POSTS} where postsID="${id}"`);
+        return db.load(`select * from ${TBL_POSTS} where postsID="${id}"`);
     },
     getTopView: (top) => {
-        return db.load(`select p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views 
+        return db.load(`select p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views, p.date
                 from ${TBL_POSTS} p,${TBL_DETAIL} dt
                 WHERE p.catID=dt.detailID order by views DESC LIMIT 0,${top}`);
     },
+    getRandomPosts: (cate, top) => {
+        return db.load(`select p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views, p.date
+                from ${TBL_POSTS} p,${TBL_DETAIL} dt
+                WHERE p.catID=dt.detailID and p.catID = "${cate}" LIMIT 0,${top}`);
+    },
     topWeek(top) {
-        return db.load(`select p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views 
+        return db.load(`select p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views ,p.date
         from ${TBL_POSTS} p,${TBL_DETAIL} dt
         WHERE p.catID=dt.detailID order by views DESC LIMIT 0,${top}`);
     },
     newpost(top) {
-        return db.load(`select p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views 
+        return db.load(`select  p.postsID,p.title,dt.detailID,dt.catName,p.small_avatar,p.views, p.date
         from ${TBL_POSTS} p,${TBL_DETAIL} dt
         WHERE p.catID=dt.detailID order by date DESC LIMIT ${top}`);
     },
@@ -43,5 +48,5 @@ module.exports = {
     },
     add: (entity) => {
         return db.add(TBL_CATE, entity);
-    }
+    },
 }

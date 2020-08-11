@@ -12,17 +12,19 @@ router.use(passport.session());
 //setup login with google
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
-    (req, res) => {
+    async(req, res) => {
         req.session.isLogin = true;
-        req.session.authUser = req.user;
+        const user = await accModel.single(req.user.accID)
+        req.session.authUser = user[0];
         res.redirect('/');
     });
 //login with facebook
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
-    (req, res) => {
+    async(req, res) => {
         req.session.isLogin = true;
-        req.session.authUser = req.user;
+        const user = await accModel.single(req.user.accID)
+        req.session.authUser = user[0];
         return res.redirect('/');
     }
 );
@@ -38,7 +40,6 @@ router.get('/', redi.redirectAuthUser, (req, res) => {
 
 router.post('/', async(req, res) => {
     const user = await accModel.singleByUsername(req.body.fname);
-    console.log(bcrypt.hash(user[0].password));
     if (user[0]) {
         if (bcrypt.compareSync(req.body.fpw, user[0].password)) {
             req.session.isLogin = true;

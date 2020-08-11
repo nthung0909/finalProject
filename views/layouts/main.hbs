@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/admin/home.css">
+  {{#each style}}
+    <link rel="stylesheet" href="{{css}}">
+  {{/each}}
 </head>
 
 <body>
@@ -194,8 +197,8 @@
                     <div class="col-lg-8 col-sm-12 col-md-10 p-0">
                       <div class="top-search pt-2">
                         <nav class="navbar navbar-light p-0">
-                          <form class="form-inline col-12 p-0" action="/">
-                            <input class="form-control mr-sm-2 col-10" type="search"
+                          <form class="form-inline col-12 p-0" action="/search" method="GET">
+                            <input class="form-control mr-sm-2 col-10" type="search" name="query"
                               placeholder="Nhập nội dung hoặc chủ đề..." aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                               <i class="fa fa-search" aria-hidden="true"></i></button>
@@ -237,24 +240,23 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="/">HOME</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=congnghe">Công nghệ</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=vanhoa">Văn hóa</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=xahoi">Xã hội</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=thethao">Thể thao</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=yte">Y Tế</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/?cate=giaoduc">Giáo dục</a>
-                  </li>
+                  {{#each cate}}
+                      <li class="nav-item">
+                        <div class="btn-group category">
+                          <button type="button" class="btn dropdown-toggle " data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{catName}}
+                          </button>
+                          <div class="dropdown-menu">
+                            {{#each ../detailCate}}
+                            {{#compareCatID catID ../catID }}
+                              <a class="dropdown-item" href="/search?cate={{../catName}}">{{../catName}}</a>
+                            {{/compareCatID}}
+                          {{/each}}
+                          </div>
+                        </div>
+                      </li>
+                  {{/each}}
                 </ul>
               </div>
             </div>
@@ -266,6 +268,9 @@
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        {{#each js}}
+          <script src="{{_js}} "></script>
+        {{/each}}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
           integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
           crossorigin="anonymous"></script>
@@ -275,6 +280,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
           integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
           crossorigin="anonymous"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>
