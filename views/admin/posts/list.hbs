@@ -1,8 +1,8 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     <h1>
-        <a name="" id="" class="btn btn-outline-success" href="/admin/categorys/add123" role="button">
-           Add Category
+        <a name="" id="" class="btn btn-outline-success" href="/admin/posts/add" role="button">
+           Add 
            <i class="fa fa-plus" aria-hidden="true"></i>
         </a>
     </h1>
@@ -11,18 +11,28 @@
     <table class="table" >
   <thead>
     <tr>
+      <th scope="col">PostID</th>
+      <th scope="col">Title</th>
       <th scope="col">CatId</th>
-      <th scope="col">CatName</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Writer</th>
+      <th scope="col">Approver</th>
+      <th scope="col">Views</th>
+      <th scope="col">Status</th>
+      <th scope="col">Edit</th>
     
     </tr>
   </thead>
   <tbody>
-    {{#each categorys}}
+    {{#each postss}}
     <tr>
+      <td>{{postsID}}</td>
+      <td>{{title}}</td>
       <td>{{catID}}</td>
-      <td>{{catName}}</td>
-      <td><a href="/admin/categorys/detail1?id={{catID}}"><button class="btn btn-primary" type="submit">
+      <td>{{writer}}</td>
+      <td>{{approver}}</td>
+      <td>{{views}}</td>
+      <td>{{status}}</td>
+      <td><a href="/admin/posts/edit?id={{postsID}}"><button class="btn btn-primary" type="submit">
           Edit &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
       </td>
       

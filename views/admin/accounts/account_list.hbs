@@ -1,4 +1,6 @@
-<div class="d-flex align-items-center justify-content-between mb-4">
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex align-items-center justify-content-between mb-4">
     <h class="h3 mb-0 text-gray-800">Dashboard</h>
     <h1>
         <a name="" id="aa" class="btn btn-outline-success" href="/admin/accounts/add" role="button">
@@ -7,14 +9,16 @@
         </a>
     </h1>
 </div>
-<div>
+</div>
+
+  <div class="col-12">
     <table class="table">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">FullName</th>
       <th scope="col">UserName</th>
-      <th scope="col">Password</th>
+     
       <th scope="col">Email</th>
       <th scope="col">Type</th>
       <th scope="col" >Delete</th>
@@ -26,7 +30,7 @@
       <td>{{accID}}</td>
       <td>{{fullname}}</td>
       <td>{{username}}</td>
-      <td>{{password}}</td>
+  
       <td>{{email}}</td>
       <td>{{type}}</td>
       <td><a href="/admin/accounts/detail?id={{accID}}"><button class="btn btn-primary" type="submit">
@@ -36,10 +40,7 @@
     {{/each}}
   </tbody>
 </table>
-</div>
-<!-- Content Row -->
-<div class="row">
-    <!-- /.container-fluid -->
+  </div>
 </div>
 
 <!-- Footer -->

@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     top10.forEach(item => delete item.content);
     const hightlight = await posts.topWeek(3);
     const newpost = await posts.newpost(10);
-    console.log(res.locals.lcAuthUser);
+    const cate = await cateModel.all();
     res.render('readers/home', {
         authUser: res.locals.lcAuthUser,
         isLogin: res.locals.lcLogin,

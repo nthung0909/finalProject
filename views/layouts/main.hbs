@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/admin/home.css">
+  {{#each style}}
+
+  <link rel="stylesheet" href="{{css}}">
+  {{/each}}
+  
 </head>
 
 <body>
@@ -21,7 +26,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
         <div class="sidebar-brand-text mx-3">SB Admin</div>
       </a>
 
@@ -42,9 +47,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tiện ích:</h6>
-            <a class="collapse-item" href="">Danh sách bài viết</a>
+            <a class="collapse-item" href="/admin/posts/list">Danh sách bài viết</a>
             <a class="collapse-item" href="">Đăng bài</a>
-            <a class="collapse-item" href="">Quản lý nhãn (tag)</a>
+            
           </div>
         </div>
       </li>
@@ -58,10 +63,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tiện ích:</h6>
-            <a class="collapse-item" href="index.html">Danh sách</a>
-            <a class="collapse-item" href="index.html">Tạo tài khoản</a>
-            <a class="collapse-item" href="index.html">Sửa</a>
-            <a class="collapse-item" href="index.html">Cập Nhật</a>
+            <a class="collapse-item" href="/admin/accounts/list">Danh sách</a>
+            <a class="collapse-item" href="/admin/accounts/add">Tạo tài khoản</a>
+            {{!-- <a class="collapse-item" href="index.html">Sửa</a>
+            <a class="collapse-item" href="index.html">Cập Nhật</a> --}}
           </div>
         </div>
       </li>
@@ -69,16 +74,16 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fa fa-cog " aria-hidden="true"></i>
-          <span>Article Mannagement</span>
+          <span>Nhãn</span>
         </a>
         <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
           data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Thêm</a>
-            <a class="collapse-item" href="utilities-border.html">Xóa</a>
-            <a class="collapse-item" href="utilities-animation.html">Sửa</a>
-            <a class="collapse-item" href="utilities-other.html">Cập Nhật</a>
+            <a class="collapse-item" href="/admin/categories/list">Danh sách</a>
+            <a class="collapse-item" href="/admin/categories/add">Tạo Nhãn</a>
+            {{!-- <a class="collapse-item" href="utilities-animation.html">Sửa</a>
+            <a class="collapse-item" href="utilities-other.html">Cập Nhật</a> --}}
           </div>
         </div>
       </li>
@@ -91,10 +96,9 @@
         <div id="Account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Thêm</a>
-            <a class="collapse-item" href="utilities-border.html">Xóa</a>
-            <a class="collapse-item" href="utilities-animation.html">Sửa</a>
-            <a class="collapse-item" href="utilities-other.html">Cập Nhật</a>
+            <a class="collapse-item" href="/admin/accounts/add">Thêm</a>
+            <a class="collapse-item" href="/admin/accounts/list">Xóa</a>
+            <a class="collapse-item" href="/admin/accounts/list">Cập Nhật</a>
           </div>
         </div>
       </li>
@@ -113,12 +117,9 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                aria-label="Search" aria-describedby="basic-addon2">
+             
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
+               
               </div>
             </div>
           </form>
@@ -266,7 +267,9 @@
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/home.js"></script>
+        {{#each js}}
+        <script src="{{_js}}"></script>
+        {{/each}}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
           integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
           crossorigin="anonymous"></script>

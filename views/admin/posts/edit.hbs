@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-3">
+
+  </div>
+  <div class="col-6">
+    <form method="POST">
+      <div class="form-group">
+        <label for="exampleInputEmail1">PostID</label>
+        <input type="text" class="form-control" id="txtpostID" name="postsID" value="{{this.post.postsID}}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Title</label>
+        <input type="text" class="form-control" id="txtcatName" name="title" value="{{this.post.title}}" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">CatID</label>
+        <select class="form-control" id="catid" name="catID">
+          <option value="{{post.catID}}" selected>{{post.catName}}</option>
+          {{#each catID}}
+          <option value="{{catID}}">
+            {{catName}}
+          </option>
+
+          {{/each}}
+        </select>
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Writer</label>
+        <select class="form-control" id="lbwriter" name="writer">
+          <option value="{{post.writer}}" selected>{{post.fullname}}</option>
+          {{#each writer }}
+          <option value="{{accID}}">
+            {{fullname}}
+          </option>
+
+
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Approver</label>
+        <select class="form-control" id="lbapprover" name="approver">
+          <option value="{{approver.approver}}" selected>{{approver.fullname}}</option>
+          {{#each writer}}
+          <option value="{{accID}}">
+            {{fullname}}
+          </option>
+
+
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Views</label>
+        <input type="text" class="form-control" id="txtcatID" name="views" value="{{this.post.views}}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Status</label>
+
+        <select class="form-control" id="status" name="status">
+          <option value="{{post.status}}" selected>{{post.statusName}}</option>
+          {{#each status}}
+          <option value="{{statusID}}">
+            {{statusName}}
+          </option>
+
+          {{/each}}
+        </select>
+
+
+      </div>
+      <div class="form-groups tag_list">
+            <span  style="margin-bottom:0px">Danh sách tag: &nbsp; </span>
+            {{#each tag_list}}
+              <button type="button" class="btn border  p-0">
+                #{{tagID}}
+                <i class="fa fa-window-close" aria-hidden="true"></i>
+              </button>
+              &nbsp;&nbsp;
+            {{/each}}
+          <div class="form-inline mt-3">
+            <input type="text" class="form-control mr-5" placeholder="nhập nhãn...">
+            <input type="button" class="add_tag" class="btn btn-success" value="Thêm nhãn">
+          </div>
+          </div>
+          <br>
+          <br>
+      <div>
+        <a class="btn btn-success" href="/admin/posts/list" role="button">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+        </a>
+        <button type="submit" class="btn btn-primary" formaction="/admin/posts/update">update</button>
+        <button type="submit" class="btn btn-danger" title="Remove Posts" formaction="/admin/posts/del">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </div>
+
+
+    </form>
+  </div>
+
+</div>

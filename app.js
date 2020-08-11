@@ -24,6 +24,8 @@ app.use('/login', require('./routes/login.route'));
 app.use('/register', require('./routes/register.route'));
 app.use('/admin', require('./routes/admin/accounts.route'));
 app.use('/admin/categories',require('./routes/admin/categories.router'));
+app.use('/admin/posts',require('./routes/admin/posts.route'));
+//app.use('/admin/posts', require('./routes/admin/posts.route'));
 app.listen(PORT, (req, res) => {
     console.log(`app is running at http:${PORT}`);
 });
