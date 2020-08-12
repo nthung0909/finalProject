@@ -9,16 +9,19 @@ module.exports = {
     },
     allByUserInPosts: (accID, postsID) => {
         return db.load(`select * from ${TBL_CMT}
-                        where accID=${accID},postID=${postsID}`);
+                        where accID=${accID} and postID=${postsID}`);
     },
     getViews: (id) => {
         return db.load(`select count(*) as comments from comments where postID=${id}`)
     },
     patch: (entity) => {
         const condition = {
-            accID: entity.postID
+            postID: entity.postID
         }
         delete entity.postID;
         return db.patch(TBL_CMT, entity, condition);
-    }
+    },
+    add: (entity) => {
+        return db.add(TBL_CMT, entity);
+    },
 }

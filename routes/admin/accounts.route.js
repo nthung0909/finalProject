@@ -2,7 +2,6 @@ const express = require('express');
 const redi = require('../../middlewares/auth.mdw');
 const users = require('../../models/users.model');
 const adCategory = require('../../models/category.model');
-const { route } = require('../login.route');
 const categoryModel = require('../../models/category.model');
 const usersModel = require('../../models/users.model');
 const bcrypt = require('bcryptjs');
