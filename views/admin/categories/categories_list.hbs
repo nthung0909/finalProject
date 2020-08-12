@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-12">
+   <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <h1>
+        <a name="" id="" class="btn btn-outline-success" href="/admin/categories/add" role="button">
+           Add Category
+           <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </h1>
+</div>
+</div>
+</div>
+<div class="col-12" >
+    <table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">CatId</th>
+      <th scope="col">CatName</th>
+      <th scope="col">Delete</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    {{#each categorys}}
+    <tr>
+      <td>{{catID}}</td>
+      <td>{{catName}}</td>
+      <td><a href="/admin/categories/detail?id={{catID}}"><button class="btn btn-primary" type="submit">
+          Edit &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+      </td>
+      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+        </div>
+    </div>
+</footer>
