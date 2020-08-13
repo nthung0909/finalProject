@@ -115,3 +115,81 @@
 img {
     max-width: 100%;
 }
+
+.lighten-3{
+    background-color: #74a1c7;
+}
+
+.list-unstyled a{
+    text-decoration: none;
+}
+
+.btn-floating{
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    width: 45px;
+    height: 45px;
+}
+
+.btn-floating:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: .5s ease;
+}
+
+.btn-floating i{
+    display: inline-block;
+    width: inherit;
+    color: #fff;
+    text-align: center;
+    padding: 7px;
+}
+
+.btn-fb {
+    color: #fff;
+    background-color: #3b5998;
+}
+
+.btn-tw {
+    color: #fff;
+    background-color: #55acee;
+}
+
+
+.btn-google {
+    color: #fff;
+    background-color: #dd4b39;
+}
+
+.btn-dribbble {
+    color: #fff;
+    background-color: #ec4a89;
+}
+
+#goto-top-page{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    background: rgba(0, 0, 0, .2);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+#goto-top-page:hover{
+    background: rgba(0, 0, 0, .7);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+

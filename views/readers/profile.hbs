@@ -6,15 +6,15 @@
                     {{!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> --}}
                     <img class="rounded-circle profile-avatar" alt="" src="{{this.user.avatar}}"
                         data-holder-rendered="true">
+                    <input type="file" name="avatar" id="avatar" class="upload-avatar">
+                    {{!-- <span class="avatar-hover"><i class="fa fa-camera-retro fa-2x" aria-hidden="true" hidden ><p>Cập nhật</p></i></span> --}}
                 </div>
                 <br>
                 {{!-- class="d-flex justify-content-center" --}}
-                <div>
-                    {{!-- <button type="file" class="btn btn-primary">Cập nhật</button> --}}
-                    {{!-- <input type="file" name="avatar" id="avavar"> --}}
-                    <input type="file" name="avatar" id="avatar">
+
+                {{!-- <div class="d-flex justify-content-center">
                     <button type="submit" formaction="/profile/upload_image">Thay hình đại diện</button>
-                </div>
+                </div> --}}
             </div>
             <div class="col-8">
                 {{!-- FullName --}}
