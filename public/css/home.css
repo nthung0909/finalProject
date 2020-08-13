@@ -62,21 +62,6 @@
     background-color: #8a2be2;
 }
 
-.posts {
-    background-color: chartreuse;
-    height: 100px;
-}
-
-.posts-image {
-    background-color: beige;
-    height: 100px;
-}
-
-.posts-title {
-    height: 100px;
-    background-color: burlywood;
-}
-
 .image-top10 {
     min-height: 6.25vw;
 }
@@ -112,8 +97,9 @@
     text-decoration: none;
 }
 
-img {
-    max-width: 100%;
+.sub-title a:hover {
+    text-decoration: none;
+    color: #2fa1b3;
 }
 
 .lighten-3{

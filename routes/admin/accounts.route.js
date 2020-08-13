@@ -2,49 +2,65 @@ const express = require('express');
 const redi = require('../../middlewares/auth.mdw');
 const users = require('../../models/users.model');
 const adCategory = require('../../models/category.model');
-const { route } = require('../login.route');
 const categoryModel = require('../../models/category.model');
 const usersModel = require('../../models/users.model');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('admin/home', {
-        //authUser: res.locals.lcAuthUser,
-        isAdmin: true
-    });
-});
+ router.get('/', (req, res) => {
 
-router.get('/categories', async (req, res) => {
-    const categorys = await adCategory.all();
-    res.render('admin/categorys/category_list', {
-        isAdmin: true,
-        categorys: categorys
-    })
-})
+     res.render('admin/home', {
+         //authUser: res.locals.lcAuthUser,
+         isAdmin:true
+     });
+ });
+
+// router.get('/categories',async (req,res)=>{
+//     const categorys=await adCategory.all();
+//     res.render('admin/categorys/category_list',{
+//         isAdmin: true,
+//         categorys:categorys
+//     })
+// })
 // account////////////////////
 
-router.get('/accounts/list', async (req, res) => {
-    const accounts = await users.allWithNoAdmin();
-    res.render('admin/accounts/account_list', {
-        isAdmin: true,
-        accounts: accounts
+router.get('/accounts/list',async (req,res)=>{
+    const accounts=await users.allWithNoAdmin();
+    res.render('admin/accounts/account_list',{
+        isAdmin:true,
+        accounts:accounts
     })
 })
 
 
-router.get('/accounts/detail', async (req, res) => {
+router.get('/accounts/detail', async(req, res) => {
     const Id = req.query.id;
     const rows = await usersModel.single(Id);
-    const account = rows[0];
-    res.render('admin/accounts/edit_account', {
-        isAdmin: true,
-        account
-
+    const account =  rows[0];
+    const typestatus = await usersModel.alltypestatus();
+    const rowsSingleType = await usersModel.singleType(Id);
+    const rowsType = rowsSingleType[0];
+ 
+    const style = [{
+        css : '/css/admin/edit_account.css'
+    }];
+    const js =[{
+        _js:'/js/admin/account.js'
+    }];
+    //console.log(rowsType);
+    //console.log(typestatus);
+    res.render('admin/accounts/edit_account',{
+        isAdmin:true,
+        account,
+        typestatus,
+        rowsType,
+        js,
+        style
+        
     })
 })
-router.post('/accounts/update', async (req, res) => {
-    bcrypt.hash(req.body.password, 8, function (err, hash) {
+router.post('/accounts/update', async(req, res) => {
+    bcrypt.hash(req.body.password, 8, function(err, hash) {
         if (err)
             res.render('/404');
         else {
@@ -53,15 +69,21 @@ router.post('/accounts/update', async (req, res) => {
     });
 
     await usersModel.patch(req.body);
-    res.redirect('/admin/accounts/list');
+    res.redirect('/admin/accounts/list')
 })
-router.post('/accounts/del', async (req, res) => {
+router.post('/accounts/del',async(req,res)=>{
     //console.log("Vo duoc day!");
     //console.log(req);
     await usersModel.del(req.body.accID);
-    res.redirect('/admin/accounts')
+    res.redirect('/admin/accounts/list')
 })
-// thêm account
+router.post('/accounts/del', async(req, res) => {
+        //console.log("Vo duoc day!");
+        //console.log(req);
+        await usersModel.del(req.body.accID);
+        res.redirect('/admin/accounts')
+    })
+    // thêm account
 async function getAccountID() {
     var account = await usersModel.all();
     var tmp = 0;
@@ -80,20 +102,20 @@ async function getAccountID() {
     }
     return tmp;
 }
-router.get('/accounts/add', async (req, res) => {
+router.get('/accounts/add', async(req, res) => {
     res.render('admin/accounts/add_account', {
         isAdmin: true,
         //categories:category,
     });
 });
 
-router.post('/accounts/add', async (req, res) => {
+router.post('/accounts/add', async(req, res) => {
     //  bcrypt.hash(req.body.password,30).then(rs=>{
     //      req.body.password=rs;
     //  }).catch(err=>{
     //      console.log("can not hash");
     //  });
-    bcrypt.hash(req.body.password, 8, function (err, hash) {
+    bcrypt.hash(req.body.password, 8, function(err, hash) {
         if (err)
             res.render('/404');
         else
@@ -109,4 +131,5 @@ router.post('/accounts/add', async (req, res) => {
     //console.log(rs);
     res.redirect('/admin/accounts/list');
 })
+
 module.exports = router;
