@@ -208,9 +208,9 @@
                         <div class="dropdown">
                           <p style="color:white" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
                             role="button">
-                            {{authUser.fullname}} <i class="fa fa-cog" aria-hidden="true"></i></p>
+                            {{this.authUser.fullname}} <i class="fa fa-cog" aria-hidden="true"></i></p>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="/profile?id={{authUser.accID}}"><i class="fa fa-user"
+                            <a class="dropdown-item" href="/profile?id={{this.authUser.accID}}"><i class="fa fa-user"
                                 aria-hidden="true"></i> Cá nhân</a>
                             <div role="separator" class="dropdown-divider"></div>
                             <form action="/logout" method="POST">
@@ -246,7 +246,7 @@
                           <div class="dropdown-menu">
                             {{#each ../detailCate}}
                             {{#compareCatID catID ../catID }}
-                              <a class="dropdown-item" href="/search?cate={{../catName}}">{{../catName}}</a>
+                              <a class="dropdown-item" href="/search?detailcate={{../catName}}">{{../catName}}</a>
                             {{/compareCatID}}
                           {{/each}}
                           </div>

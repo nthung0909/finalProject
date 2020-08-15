@@ -11,6 +11,8 @@ const utilFunction = require('../../utils/function');
 const router = exppress.Router();
 
 router.get('/', async(req, res) => {
+    // console.log(req.session);
+    // console.log(res.locals);
     // const cate = await cateModel.all();
     const top10 = await posts.getTopView(10);
     await top10.forEach(item => {
@@ -20,22 +22,21 @@ router.get('/', async(req, res) => {
     await hightlight.forEach(item => {
         item.date = utilFunction.getDateTime(item.date);
     });
+    //console.log(hightlight);
     const newpost = await posts.newpost(10);
     await newpost.forEach(item => {
         item.date = utilFunction.getDateTime(item.date);
     });
-    console.log(newpost);
     const cate = await cateModel.all();
     const detailCate = await cateModel.allDetailCate();
     const posts_of_each_cate = await posts.posts_of_each_categories();
-    console.log(posts_of_each_cate);
     await posts_of_each_cate.forEach(item => {
         item.date = utilFunction.getDateTime(item.date);
     });
     const style = [{
         css: '/css/posts/style.css'
     }];
-    //console.log(posts_of_each_cate);
+    console.log(res.locals.lcAuthUser);
     res.render('readers/home', {
         authUser: res.locals.lcAuthUser,
         isLogin: res.locals.lcLogin,
@@ -92,15 +93,16 @@ router.post('/posts', async(req, res) => {
     const comment_of_user = await commentsModel.allByUserInPosts(res.locals.lcAuthUser.accID, req.body.postID);
     req.body.STT = comment_of_user.length + 1;
     req.body.accID = res.locals.lcAuthUser.accID;
-    console.log(req.body);
+    //console.log(req.body);
     req.body.date = await new Date();
-    console.log(req.body);
+    //console.log(req.body);
     await commentsModel.add(req.body);
     res.status(200).send(res.locals.lcAuthUser);
 });
 router.post('/logout', function(req, res) {
     req.session.isLogin = false;
     req.session.authUser = null;
+    req.session.isVIP = false;
     res.redirect(req.headers.referer);
 });
 module.exports = router;

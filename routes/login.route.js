@@ -29,8 +29,6 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', { failur
     }
 );
 
-
-
 router.get('/', redi.redirectAuthUser, (req, res) => {
     res.render('login/login', {
         layout: false,
@@ -42,14 +40,22 @@ router.post('/', async(req, res) => {
     const user = await accModel.singleByUsername(req.body.fname);
     if (user[0]) {
         if (bcrypt.compareSync(req.body.fpw, user[0].password)) {
-            req.session.isLogin = true;
             req.session.authUser = user[0];
             // res.locals.lcAuthUser = user[0];
             // res.locals.lcLogin = true;
             if (user[0].type === 4) {
+                res.locals.lcAuthUser = user[0];
+                req.session.isLogin = true;
+                let now = new Date();
+                if (now.getTime() > user[0].time_up.getTime())
+                    req.session.isVIP = false;
+                else
+                    req.session.isVIP = true;
                 return res.redirect('/');
-            } else
+            } else {
+                req.session.adminLogin = true;
                 return res.redirect('/admin');
+            }
         }
     }
     req.session.isLogin = false;

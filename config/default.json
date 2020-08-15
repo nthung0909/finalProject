@@ -16,5 +16,8 @@
         "facebook_key": "2639994236273058",
         "facebook_secret": "7ec2bf32325321ebc59a2701db3781d1",
         "callback_url": "http://localhost:3000/login/auth/facebook/callback"
+    },
+    "pagination": {
+        "limit": 5
     }
 }

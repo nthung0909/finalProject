@@ -102,18 +102,34 @@
     color: #2fa1b3;
 }
 
-.lighten-3{
+.dropdown-toggle::after {
+    border: none !important;
+}
+
+.dropdown-item {
+    color: black !important;
+}
+
+.category>button:focus {
+    box-shadow: none;
+}
+
+.category button {
+    color: white !important;
+}
+
+.lighten-3 {
     background-color: #74a1c7;
 }
 
-.list-unstyled a{
+.list-unstyled a {
     text-decoration: none;
 }
 
-.btn-floating{
+.btn-floating {
     background-color: white;
     border-radius: 50%;
-    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
     width: 45px;
@@ -127,7 +143,7 @@
     transition: .5s ease;
 }
 
-.btn-floating i{
+.btn-floating i {
     display: inline-block;
     width: inherit;
     color: #fff;
@@ -145,7 +161,6 @@
     background-color: #55acee;
 }
 
-
 .btn-google {
     color: #fff;
     background-color: #dd4b39;
@@ -156,7 +171,7 @@
     background-color: #ec4a89;
 }
 
-#goto-top-page{
+#goto-top-page {
     position: fixed;
     bottom: 15px;
     right: 15px;
@@ -172,10 +187,10 @@
     cursor: pointer;
     transition-duration: .2s;
 }
-#goto-top-page:hover{
+
+#goto-top-page:hover {
     background: rgba(0, 0, 0, .7);
     width: 50px;
     height: 50px;
     line-height: 50px;
 }
-

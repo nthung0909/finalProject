@@ -7,56 +7,55 @@ const usersModel = require('../../models/users.model');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
 
- router.get('/', (req, res) => {
+router.get('/', redi.redirectAdminLogin, (req, res) => {
+    console.log(req.session.authUser);
+    res.render('admin/home', {
+        authUser: res.locals.lcAuthUser,
+        isAdmin: req.session.authUser.type === 1,
+        isWriter: req.session.authUser.type === 2,
+        isApproved: req.session.authUser.type === 3
+    });
+});
 
-     res.render('admin/home', {
-         //authUser: res.locals.lcAuthUser,
-         isAdmin:true
-     });
- });
-
-// router.get('/categories',async (req,res)=>{
-//     const categorys=await adCategory.all();
-//     res.render('admin/categorys/category_list',{
-//         isAdmin: true,
-//         categorys:categorys
-//     })
-// })
-// account////////////////////
-
-router.get('/accounts/list',async (req,res)=>{
-    const accounts=await users.allWithNoAdmin();
-    res.render('admin/accounts/account_list',{
-        isAdmin:true,
-        accounts:accounts
+router.get('/accounts/list', redi.redirectAdminLogin, async(req, res) => {
+    const accounts = await users.allWithNoAdmin();
+    res.render('admin/accounts/account_list', {
+        authUser: res.locals.lcAuthUser,
+        isAdmin: req.session.authUser.type === 1,
+        isWriter: req.session.authUser.type === 2,
+        isApproved: req.session.authUser.type === 3,
+        accounts
     })
 })
 
 
-router.get('/accounts/detail', async(req, res) => {
+router.get('/accounts/detail', redi.redirectAdminLogin, async(req, res) => {
     const Id = req.query.id;
     const rows = await usersModel.single(Id);
-    const account =  rows[0];
+    const account = rows[0];
     const typestatus = await usersModel.alltypestatus();
     const rowsSingleType = await usersModel.singleType(Id);
     const rowsType = rowsSingleType[0];
- 
+
     const style = [{
-        css : '/css/admin/edit_account.css'
+        css: '/css/admin/edit_account.css'
     }];
-    const js =[{
-        _js:'/js/admin/account.js'
+    const js = [{
+        _js: '/js/admin/account.js'
     }];
     //console.log(rowsType);
     //console.log(typestatus);
-    res.render('admin/accounts/edit_account',{
-        isAdmin:true,
+    res.render('admin/accounts/edit_account', {
+        authUser: res.locals.lcAuthUser,
+        isAdmin: req.session.authUser.type === 1,
+        isWriter: req.session.authUser.type === 2,
+        isApproved: req.session.authUser.type === 3,
         account,
         typestatus,
         rowsType,
         js,
         style
-        
+
     })
 })
 router.post('/accounts/update', async(req, res) => {
@@ -71,7 +70,7 @@ router.post('/accounts/update', async(req, res) => {
     await usersModel.patch(req.body);
     res.redirect('/admin/accounts/list')
 })
-router.post('/accounts/del',async(req,res)=>{
+router.post('/accounts/del', async(req, res) => {
     //console.log("Vo duoc day!");
     //console.log(req);
     await usersModel.del(req.body.accID);
@@ -102,9 +101,12 @@ async function getAccountID() {
     }
     return tmp;
 }
-router.get('/accounts/add', async(req, res) => {
+router.get('/accounts/add', redi.redirectAdminLogin, async(req, res) => {
     res.render('admin/accounts/add_account', {
-        isAdmin: true,
+        authUser: res.locals.lcAuthUser,
+        isAdmin: req.session.authUser.type === 1,
+        isWriter: req.session.authUser.type === 2,
+        isApproved: req.session.authUser.type === 3,
         //categories:category,
     });
 });

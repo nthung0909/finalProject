@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="container pt-3">
+        <div class="row p-0">
+            <div class="col-8 main">
+                <div class="row">
+                    <div class="col-12 content-title">
+                        <h4>TÌM KIẾM: {{#each this.query}}{{detailcate}} {{tag}}{{/each}}</h4>
+                    </div>
+                </div>
+                <p></p>
+                {{!-- search by detailCate --}}
+                <div class="row">
+                    {{#each result_query}}
+                    <div class="col-4 mb-3">
+                        <a href="/posts?id={{postsID}}">
+                            <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                        </a>
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="title-top10">
+                            <a href="/posts?id={{postsID}}">
+                                <h4>{{title}}</h4>{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
+                            </a>
+                        </div>
+                        <div class="sub-title">
+                            <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>{{date}}</span> &nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="col-12 p-0 pb-4">
+                            {{sub_content}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <hr>
+                {{!-- seach by tag --}}
+                {{!-- <div class="row">
+                    {{#each posts_by_tag}}
+                    <div class="col-4 mb-3">
+                        <a href="/posts?id={{postsID}}">
+                            <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                        </a>
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="title-top10">
+                            <a href="/posts?id={{postsID}}">
+                                <h4>{{title}}</h4>{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
+                            </a>
+                        </div>
+                        <div class="sub-title">
+                            <a href="/search?detailcate={{detailID}}"><span>{{catName}}</span></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>{{date}}</span>
+                        </div>
+                        <div class="col-12 p-0 pb-4">
+                            {{sub_content}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div> --}}
+                <div class="row justify-content-center">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item {{#unless can_go_prev}}disabled{{/unless}}">
+                                <a class="page-link" href="?{{query}}={{query_content}}&&page={{prev_value}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{#each this.page_items}}
+                            {{#if isActive}}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    {{value}}
+                                    <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                            {{else}}
+                            <li class="page-item {{#if isDisabled}}disabled{{/if}}">
+                                <a class="page-link" href="?{{../query}}={{../query_content}}&&page={{value}}">{{value}}</a>
+                            </li>
+                            {{/if}}
+                            {{/each}}
+                            <li class="page-item {{#unless can_go_next}}disabled{{/unless}}">
+                                <a class="page-link" href="?{{query}}={{query_content}}&&page={{next_value}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                {{!-- top 10 bài báo được xem nhiều nhất --}}
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12 ml-3 content-title">
+                        <h4>Xem nhiều</h4>
+                    </div>
+                    <p></p>
+                    {{#each this.topPosts}}
+                    <div class="row pl-5">
+                        <div class="col-3 image-top10 mb-2 p-0">
+                            <a href="/posts?id={{postsID}}">
+                                <img class="rounded avatar img-fluid" src="{{small_avatar}}" alt="{{title}}">
+                            </a>
+                        </div>
+                        <div class="col-9 title-top10 mb-2">
+                            <div class="title-top10">
+                                <a href="/posts?id={{postsID}}">
+                                    <span>{{title}}</span>{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
+                                </a>
+                            </div>
+                            <div class="col-12 d-flex justify-content-between sub-title p-0">
+                                <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
+                                <span>{{date}}</span>
+                                <span>{{views}}&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

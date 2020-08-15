@@ -13,7 +13,7 @@
     <tr>
       <th scope="col">PostID</th>
       <th scope="col">Title</th>
-      <th scope="col">CatId</th>
+      <th scope="col">Cat name</th>
       <th scope="col">Writer</th>
       <th scope="col">Approver</th>
       <th scope="col">Views</th>
@@ -23,11 +23,11 @@
     </tr>
   </thead>
   <tbody>
-    {{#each postss}}
+    {{#each posts}}
     <tr>
       <td>{{postsID}}</td>
       <td>{{title}}</td>
-      <td>{{catID}}</td>
+      <td>{{catName}}</td>
       <td>{{writer}}</td>
       <td>{{approver}}</td>
       <td>{{views}}</td>
