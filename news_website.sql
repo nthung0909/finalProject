@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 16, 2020 at 04:31 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th8 17, 2020 lúc 10:14 AM
+-- Phiên bản máy phục vụ: 10.4.11-MariaDB
+-- Phiên bản PHP: 7.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+07:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+07:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `news_website`
+-- Cơ sở dữ liệu: `news_website`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Cấu trúc bảng cho bảng `account`
 --
 
 CREATE TABLE `account` (
@@ -40,18 +39,18 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `account`
+-- Đang đổ dữ liệu cho bảng `account`
 --
 
 INSERT INTO `account` (`accID`, `fullname`, `username`, `password`, `email`, `type`, `avatar`, `time_up`) VALUES
 ('000001', '', 'admin', '$2a$08$JmCg7Q9fV/LBbYc.4/yxq.HL7tX6n1j6/xgqRwXpf/fTxw/gYr1FS', 'admin', 1, '/imgs/account_avatar/avatar.jpg', '0000-00-00 00:00:00'),
-('000002', 'NT Hùng', 'writer', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'writer@gmail.com', 2, '/imgs/account_avatar/avatar.jpg', '2020-08-21 00:00:00'),
-('000003', 'Nguyễn Xuân Trường', 'approver', '$2a$08$f7B.TWyDs8L.boHaokeIxewUyteIcaa/wtpeszdXYfODlVgLh8ZVe', 'approver@gmail.com', 3, '/imgs/account_avatar/avatar.jpg', '0000-00-00 00:00:00'),
-('000004', 'Nguyễn Trọng Hùng', 'norAcc', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'hungnt@gmail.com', 4, '/imgs/account_avatar/avenger.jpg', '2020-08-02 00:00:00'),
+('000002', 'NT Hùng', 'writer', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'writer@gmail.com', 3, '/imgs/account_avatar/avatar.jpg', '2020-08-21 00:00:00'),
+('000003', 'Nguyễn Xuân Trường', 'approver', '$2a$08$f7B.TWyDs8L.boHaokeIxewUyteIcaa/wtpeszdXYfODlVgLh8ZVe', 'approver@gmail.com', 2, '/imgs/account_avatar/avatar.jpg', '0000-00-00 00:00:00'),
+('000004', 'Nguyễn Trọng Hùng', 'norAcc', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'hungnt@gmail.com', 4, '/imgs/account_avatar/bgvscode.jpg', '2020-08-02 12:44:09'),
 ('000005', 'Trần Trọng Trí', 'preAcc', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'tri@gmail.com', 4, '/imgs/account_avatar/avatar.jpg', '2020-12-28 08:20:00'),
 ('000006', 'Trần Minh Tuấn', 'preAcc1', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'tuan@gmail.com', 4, '/imgs/account_avatar/avatar.jpg', '2020-10-30 23:41:00'),
-('000007', 'Trọng Trí', 'trongtri', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'trongtri0579@gmail.com', 2, '/imgs/account_avatar/avatar.jpg', '2020-07-31 00:00:00'),
-('000008', 'Nguyễn Trọng Hùng', 'TrongHung', '$2a$08$Y0J14fx6fiWb2eItn2Yqxe04hCXI6K/EBbbNc82ZgliZcb.1Xo3s2', 'tronghung@gmail.com', 3, '/imgs/account_avatar/avatar.jpg', '2020-07-31 00:00:00'),
+('000007', 'Trọng Trí', 'trongtri', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'trongtri0579@gmail.com', 3, '/imgs/account_avatar/avatar.jpg', '2020-07-31 00:00:00'),
+('000008', 'Nguyễn Trọng Hùng', 'TrongHung', '$2a$08$Y0J14fx6fiWb2eItn2Yqxe04hCXI6K/EBbbNc82ZgliZcb.1Xo3s2', 'tronghung@gmail.com', 2, '/imgs/account_avatar/avatar.jpg', '2020-07-31 00:00:00'),
 ('000009', 'Nguyễn Thanh Tuấn', 'Tuan', '$2a$08$UkjHPpBeQJoatqsdWY8lDeG8uvdAMEP9lV4PlyhyZSymAUrfBQwZ.', 'tuan000@gmail.com', 4, '/imgs/account_avatar/avatar.jpg', '2020-07-30 00:00:00'),
 ('000010', 'trí đen', 'tri', '$2a$08$9nK4ueF9Ypvxppho5aTByu226Cz9X1x9htUzJitsoQvpOOpxqHxpW', 'writer@gmail.com', 4, '/imgs/account_avatar/avatar.jpg', '2020-08-23 17:38:24'),
 ('000011', 'Chí Pheof', 'hung', '1234', 'a@gmail.com', 4, '/imgs/account_avatar/avatar.jpg', '2020-08-27 00:00:00'),
@@ -61,7 +60,36 @@ INSERT INTO `account` (`accID`, `fullname`, `username`, `password`, `email`, `ty
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `approver_cate`
+--
+
+CREATE TABLE `approver_cate` (
+  `accID` char(100) COLLATE utf8_unicode_ci NOT NULL,
+  `cateID` char(6) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `approver_cate`
+--
+
+INSERT INTO `approver_cate` (`accID`, `cateID`) VALUES
+('000003', 'cat01'),
+('000003', 'cat02'),
+('000003', 'cat03'),
+('000003', 'cat06'),
+('000003', 'cat12'),
+('000003', 'cat13'),
+('000008', 'cat04'),
+('000008', 'cat07'),
+('000008', 'cat08'),
+('000008', 'cat09'),
+('000008', 'cat10'),
+('000008', 'cat11');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categories`
 --
 
 CREATE TABLE `categories` (
@@ -70,7 +98,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`catID`, `catName`) VALUES
@@ -84,7 +112,7 @@ INSERT INTO `categories` (`catID`, `catName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Cấu trúc bảng cho bảng `comments`
 --
 
 CREATE TABLE `comments` (
@@ -96,7 +124,7 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `comments`
+-- Đang đổ dữ liệu cho bảng `comments`
 --
 
 INSERT INTO `comments` (`postID`, `accID`, `STT`, `date`, `content`) VALUES
@@ -135,7 +163,28 @@ INSERT INTO `comments` (`postID`, `accID`, `STT`, `date`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_categories`
+-- Cấu trúc bảng cho bảng `detail_account`
+--
+
+CREATE TABLE `detail_account` (
+  `typeID` int(11) NOT NULL,
+  `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `detail_account`
+--
+
+INSERT INTO `detail_account` (`typeID`, `status`) VALUES
+(1, 'admin'),
+(2, 'writer'),
+(3, 'approver'),
+(4, 'reader');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `detail_categories`
 --
 
 CREATE TABLE `detail_categories` (
@@ -145,7 +194,7 @@ CREATE TABLE `detail_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `detail_categories`
+-- Đang đổ dữ liệu cho bảng `detail_categories`
 --
 
 INSERT INTO `detail_categories` (`catID`, `detailID`, `catName`) VALUES
@@ -168,7 +217,27 @@ INSERT INTO `detail_categories` (`catID`, `detailID`, `catName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Cấu trúc bảng cho bảng `detail_status`
+--
+
+CREATE TABLE `detail_status` (
+  `statusID` int(11) NOT NULL,
+  `statusName` char(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `detail_status`
+--
+
+INSERT INTO `detail_status` (`statusID`, `statusName`) VALUES
+(0, 'đang chờ duyệt'),
+(1, 'đã được duyệt'),
+(2, 'đã hủy');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `posts`
 --
 
 CREATE TABLE `posts` (
@@ -188,13 +257,13 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `posts`
+-- Đang đổ dữ liệu cho bảng `posts`
 --
 
 INSERT INTO `posts` (`postsID`, `title`, `content`, `sub_content`, `catID`, `small_avatar`, `big_avatar`, `writer`, `approver`, `date`, `views`, `status`, `isVIP`) VALUES
 ('000001', 'Hướng dẫn gia hạn thẻ BHYT trên Cổng Dịch vụ công Quốc gia', '\r\n<div>\r\n<div>\r\n<div>&nbsp;</div>\r\n</div>\r\n</div>\r\n<div>\r\n<h2><img src=\"http://nguoilambao.vn/templates/default/images/logo.png\" alt=\"Hướng dẫn gia hạn thẻ BHYT tr&ecirc;n Cổng Dịch vụ c&ocirc;ng Quốc gia\" />&nbsp;- Với mong muốn mang lại tiện &iacute;ch, tạo thuận lợi, tiết kiệm thời gian, chi ph&iacute; khi tham gia, thụ hưởng c&aacute;c chế độ, ch&iacute;nh s&aacute;ch BHXH, BHYT, ng&agrave;y 1/7, Bảo hiểm x&atilde; hội Việt Nam đ&atilde; triển khai t&iacute;ch hợp, cung cấp dịch vụ gia hạn thẻ bảo hiểm y tế theo hộ gia đ&igrave;nh tr&ecirc;n Cổng Dịch vụ c&ocirc;ng Quốc gia.</h2>\r\n</div>\r\n<div>\r\n<p>Theo đ&oacute;, người d&acirc;n kh&ocirc;ng cần đến trực tiếp cơ quan bảo hiểm x&atilde; hội m&agrave; c&oacute; thẻ ở nh&agrave; đăng k&yacute; gia hạn thẻ bảo hiểm y tế tr&ecirc;n website&nbsp;<a href=\"https://dichvucong.gov.vn/\" rel=\"nofollow\">https://dichvucong.gov.vn</a>&nbsp;theo 9 bước sau:</p>\r\n<p><strong>Bước 1:</strong>&nbsp;Để thực hiện được DVC n&agrave;y, ch&uacute;ng ta cần đăng nhập v&agrave;o Cổng DVC Quốc gia&nbsp;<em>(nếu chưa c&oacute; t&agrave;i khoản, bạn c&oacute; thể tiến h&agrave;nh đăng k&yacute; t&agrave;i khoản một c&aacute;ch dễ d&agrave;ng tr&ecirc;n Cổng DVC Quốc gia).</em></p>\r\n<p><strong>Bước 2:</strong>&nbsp;Tr&ecirc;n Menu ở Trang chủ, bạn chọn &ldquo;Thanh to&aacute;n trực tuyến&rdquo; rồi chọn &ldquo;Thanh to&aacute;n BHXH, BHYT&rdquo;.</p>\r\n<p><img style=\"width: 500px; height: 208px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/BHXH(13).jpg\" alt=\"\" /></p>\r\n<p><strong>Bước 3:</strong>&nbsp;Ở m&agrave;n h&igrave;nh dưới, bạn chọn dịch vụ \"Gia hạn thẻ BHYT theo hộ gia đ&igrave;nh\".</p>\r\n<p><img style=\"width: 500px; height: 257px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/2(890).jpg\" alt=\"\" /></p>\r\n<p><strong>Bước 4:</strong>&nbsp;Nhập m&atilde; thẻ BHYT, chọn số th&aacute;ng muốn gia hạn v&agrave; thực hiện tra cứu.&nbsp;<em>(ở bước n&agrave;y bạn cần lưu &yacute;, m&atilde; thẻ BHYT phải l&agrave; m&atilde; thẻ của người tham gia BHYT theo hộ gia đ&igrave;nh, c&oacute; 2 k&yacute; tự đầu l&agrave; \"GD\". Nếu nhập m&atilde; thẻ của đối tượng kh&aacute;c, hệ thống sẽ c&oacute; cảnh b&aacute;o).</em></p>\r\n<p>Sau khi bạn nhập đ&uacute;ng th&ocirc;ng tin, m&agrave;n h&igrave;nh sẽ hiển thị th&ocirc;ng tin tra cứu theo m&atilde; thẻ BHYT đ&atilde; nhập.</p>\r\n<p><img style=\"width: 351px; height: 283px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/3(542).jpg\" alt=\"\" /></p>\r\n<p>Ở bước n&agrave;y, bạn lựa chọn Ng&acirc;n h&agrave;ng thụ hưởng của cơ quan BHXH&nbsp;<em>(bạn n&ecirc;n chọn ng&acirc;n h&agrave;ng c&ugrave;ng với ng&acirc;n h&agrave;ng bạn mở t&agrave;i khoản để tr&aacute;nh phải trả ph&iacute; chuyển tiền li&ecirc;n ng&acirc;n h&agrave;ng)</em>. Tiếp đ&oacute;, bạn bấm n&uacute;t \"Thanh to&aacute;n\".</p>\r\n<p><strong>Bước 5:</strong>&nbsp;Khi click v&agrave;o n&uacute;t \"Thanh to&aacute;n\" ở bước tr&ecirc;n, m&agrave;n h&igrave;nh Payment Platform sẽ hiển thị để bạn lựa chọn Ng&acirc;n h&agrave;ng hoặc trung gian thanh to&aacute;n bạn c&oacute; t&agrave;i khoản.</p>\r\n<p><img style=\"width: 512px; height: 250px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/4(571).jpg\" alt=\"\" /></p>\r\n<p>V&iacute; dụ, chọn Ng&acirc;n h&agrave;ng Vietcombank rồi click v&agrave;o n&uacute;t \"Thanh to&aacute;n\".</p>\r\n<p>Hệ thống sẽ điều hướng qua trang Internet Banking của Ng&acirc;n h&agrave;ng Vietcombank.</p>\r\n<p><strong>Bước 6:</strong>&nbsp;Đăng nhập t&agrave;i khoản Ng&acirc;n h&agrave;ng của bạn để thực hiện thanh to&aacute;n.</p>\r\n<p><img style=\"width: 501px; height: 350px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/5(264).jpg\" alt=\"\" /></p>\r\n<p><strong>Bước 7:</strong>&nbsp;Hệ thống sẽ hiển thị lại th&ocirc;ng tin thanh to&aacute;n một lần nữa để bạn x&aacute;c nhận. Nếu c&aacute;c th&ocirc;ng tin đ&atilde; ch&iacute;nh x&aacute;c, bạn click v&agrave;o n&uacute;t \"X&aacute;c nhận\".</p>\r\n<p><img style=\"width: 500px; height: 377px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/6(139).jpg\" alt=\"\" /></p>\r\n<p><strong>Bước 8:</strong>&nbsp;X&aacute;c nhận việc thanh to&aacute;n bằng c&aacute;ch nhập m&atilde; OTP do Ng&acirc;n h&agrave;ng gửi đến điện thoại của bạn.</p>\r\n<p><img style=\"width: 501px; height: 332px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/7(136).jpg\" alt=\"\" /></p>\r\n<p><strong>Bước 9:</strong>&nbsp;Khi thanh to&aacute;n th&agrave;nh c&ocirc;ng, hệ thống sẽ điều hướng quay trở lại giao diện của Cổng DVC Quốc gia với th&ocirc;ng b&aacute;o \"Thanh to&aacute;n th&agrave;nh c&ocirc;ng\".</p>\r\n<p><img style=\"width: 500px; height: 264px; display: block; margin-left: auto; margin-right: auto;\" src=\"http://nguoilambao.vn/upload_images/images/8(64).jpg\" alt=\"\" /></p>\r\n<p>Như vậy, thẻ BHYT của bạn (hoặc người th&acirc;n) đ&atilde; được gia hạn th&agrave;nh c&ocirc;ng. Chủ nh&acirc;n của thẻ BHYT sẽ nhận được tin nhắn của BHXH Việt Nam th&ocirc;ng b&aacute;o về thời hạn mới của thẻ BHYT.</p>\r\n<p>Tại m&agrave;n h&igrave;nh tr&ecirc;n, bạn c&oacute; thể \"tải bi&ecirc;n lai\" hoặc xem \"lịch sử giao dịch\". Th&ocirc;ng tin thanh to&aacute;n sẽ được lưu lại trong phần lịch sử giao dịch để bạn c&oacute; thể thực hiện v&agrave;o những lần sau.</p>\r\n</div>', '', 'cat01', 'https://photo-1-baomoi.zadn.vn/w200_r3x2_sm/2020_07_03_359_35575027/cbd6c46b71289876c139.jpg', '', '000002', '000003', '2020-07-11 00:00:00', 0, 2, 0),
 ('000002', 'Top 5 phần mềm phân vùng ổ đĩa miễn phí tốt nhất', '\r\n\r\n<h2>(<a href=\"https://baodatviet.vn/khoa-hoc/cong-nghe/\">C&ocirc;ng nghệ</a>) - Ph&acirc;n v&ugrave;ng ổ đĩa l&agrave; qu&aacute; tr&igrave;nh kh&ocirc;ng thể thiếu nếu bạn muốn sử dụng m&aacute;y t&iacute;nh hiệu quả.</h2>\r\n<ul style=\"list-style-type: none;\">\r\n<li>&nbsp;</li>\r\n</ul>\r\n<div id=\"divContent\">\r\n<p>Việc ph&acirc;n v&ugrave;ng sẽ gi&uacute;p quản l&yacute; ổ đĩa, tạo mới, mở rộng, thu nhỏ, sao lưu, phục hồi dữ liệu &hellip; m&agrave; kh&ocirc;ng sợ ảnh hưởng tới c&aacute;c ổ đĩa kh&aacute;c.</p>\r\n<p>Hiện nay tr&ecirc;n thị trường xuất hiện rất nhiều phần mềm ph&acirc;n v&ugrave;ng ổ đĩa kh&aacute;c nhau. Nếu bạn đang ph&acirc;n v&acirc;n kh&ocirc;ng biết n&ecirc;n chọn phần mềm n&agrave;o tốt th&igrave; h&atilde;y theo d&otilde;i b&agrave;i viết dưới đ&acirc;y nh&eacute;!</p>\r\n<p>Dưới đ&acirc;y l&agrave; top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa được nhiều người sử dụng nhất hiện nay:</p>\r\n<p><strong>1. EaseUS Partition Master Free (n&ecirc;n d&ugrave;ng)</strong></p>\r\n<table border=\"0\" width=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\r\n<tbody>\r\n<tr>\r\n<td><img title=\"Top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; tốt nhất\" src=\"http://st.galaxypub.vn/staticFile/Subject/2020/07/03/291733/top-5-phan-mem-phan-vung-o-dia-mien-phi-tot-nhat_31723249.jpg\" alt=\"Top 5 phan mem phan vung o dia mien phi tot nhat\" align=\"center\" border=\"0\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<div>&nbsp;</div>\r\n<p>Một trong những phần mềm ph&acirc;n v&ugrave;ng ổ đĩa được đ&aacute;nh gi&aacute; tốt nhất hiện nay đ&oacute; l&agrave;&nbsp;<a href=\"https://www.easeus.com/partition-manager/epm-free.html\" target=\"_BLANK\">EaseUS Partition Master Free</a>. Đ&acirc;y l&agrave; một phần mềm miễn ph&iacute; với rất nhiều t&iacute;nh năng hữu &iacute;ch gi&uacute;p người d&ugrave;ng quản l&yacute;,&nbsp; lưu trữ dữ liệu hiệu quả, đồng thời đảm bảo an to&agrave;n cho dữ liệu v&agrave;&nbsp;<strong>chống ph&acirc;n mảnh ổ cứng</strong>.</p>\r\n<p>Phần mềm n&agrave;y hỗ trợ hệ điều h&agrave;nh Windows 10/8/7/Vista/XP.</p>\r\n<p><strong>Ưu điểm của phần mềm n&agrave;y đ&oacute; l&agrave;:</strong></p>\r\n<p>- Giao diện đơn giản, dễ sử dụng</p>\r\n<p>-&nbsp;Cung cấp nhiều t&iacute;nh năng hiện đại như: n&acirc;ng cấp ổ cứng lớn hơn, quản l&yacute; ph&acirc;n v&ugrave;ng cơ bản, x&oacute;a ph&acirc;n v&ugrave;ng, kiểm tra ph&acirc;n v&ugrave;ng, kh&ocirc;i phục ph&acirc;n v&ugrave;ng bị mất v&agrave; căn chỉnh SSD 4K, &hellip;</p>\r\n<p>- Phần mềm hỗ trợ nhiều thao t&aacute;c hữu &iacute;ch: cho ph&eacute;p người sử dụng tạo mới, x&oacute;a ph&acirc;n v&ugrave;ng c&aacute;c ổ đĩa, thay đổi k&iacute;ch thước, định dạng, ẩn hoặc hiện c&aacute;c ph&acirc;n v&ugrave;ng hiện c&oacute;, &hellip;</p>\r\n<p>- Cho ph&eacute;p xem trước c&aacute;c thay đổi trước khi &aacute;p dụng ph&acirc;n v&ugrave;ng.</p>\r\n<p><strong>Nhược điểm</strong>:</p>\r\n<p>- Hạn chế duy nhất của phần mềm n&agrave;y đ&oacute; l&agrave; mỗi lần ph&acirc;n v&ugrave;ng ổ đĩa hệ thống th&igrave; phải khởi động lại hệ thống.</p>\r\n<p>EaseUS c&oacute; rất nhiều thể loại phần mềm kh&aacute;c nhau, v&agrave; trong đ&oacute; c&oacute; cả phần mềm mục hồi dữ liệu&nbsp;<a href=\"https://www.easeus.com/datarecoverywizard/free-data-recovery-software.htm\" target=\"_BLANK\">EaseUS Data Recovery Wizard</a>.&nbsp; Với phần mềm n&agrave;y bạn c&oacute; thể:</p>\r\n<p>- Phục hồi c&aacute;c loại file h&igrave;nh / game / t&agrave;i liệu đ&atilde; bị x&oacute;a.</p>\r\n<p>- Dung lượng phục hồi miễn ph&iacute; l&ecirc;n đến 2GB</p>\r\n<p>- Bản c&oacute; ph&iacute; th&igrave; sẽ kh&ocirc;ng giới hạn dung lượng</p>\r\n<p>- V&agrave; nhiều t&iacute;nh năng hấp dẫn kh&aacute;c.. H&atilde;y truy cập v&agrave;o li&ecirc;n kết ở tr&ecirc;n để t&igrave;m hiểu chi tiết hơn.</p>\r\n<p><strong>2.&nbsp; Paragon Partition Manager</strong></p>\r\n<table border=\"0\" width=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\r\n<tbody>\r\n<tr>\r\n<td><img title=\"Top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; tốt nhất\" src=\"http://st.galaxypub.vn/staticFile/Subject/2020/07/03/291733/top-5-phan-mem-phan-vung-o-dia-mien-phi-tot-nhat_31726920.jpg\" alt=\"Top 5 phan mem phan vung o dia mien phi tot nhat\" align=\"center\" border=\"0\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Paragon Partition Manager</strong>&nbsp;cũng l&agrave; một phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; d&agrave;nh cho hệ điều h&agrave;nh Windows m&agrave; bạn kh&ocirc;ng n&ecirc;n bỏ qua. Với phần mềm n&agrave;y bạn c&oacute; thể quản l&yacute; ph&acirc;n v&ugrave;ng một c&aacute;ch dễ d&agrave;ng, thực hiện c&aacute;c thao t&aacute;c từ cơ bản như tạo ph&acirc;n v&ugrave;ng mới, di chuyển, định dạng, thay đổi k&iacute;ch thước, &hellip; cho đến n&acirc;ng cao như l&agrave; khả năng chuyển đổi ổ HFS th&agrave;nh NTFS.</p>\r\n<p>Phần mềm n&agrave;y sở hữu rất nhiều ưu điểm như:</p>\r\n<p>- Hỗ trợ hầu hết c&aacute;c hệ thống tập tin phổ biến nhất hiện nay như HFS, NTFS v&agrave; FAT32.</p>\r\n<p>- Cho ph&eacute;p phục hồi dữ liệu tr&ecirc;n ổ cứng hoặc ghi dữ liệu ra c&aacute;c loại đĩa CD/DVD.</p>\r\n<p>- Trang bị nhiều t&iacute;nh năng ti&ecirc;n tiến gi&uacute;p tối ưu h&oacute;a hiệu suất của ổ cứng trong qu&aacute; tr&igrave;nh chia ổ.</p>\r\n<p>-&nbsp; Giao diện đơn giản, dễ hiểu</p>\r\n<p>Nhược điểm:</p>\r\n<p>- Phi&ecirc;n bản miễn ph&iacute; kh&ocirc;ng đầy đủ t&iacute;nh năng cho lắm, c&oacute; một số t&iacute;nh năng bị v&ocirc; hiệu h&oacute;a chỉ phi&ecirc;n bản c&oacute; ph&iacute; mới sử dụng được.</p>\r\n<p><strong>3.&nbsp; Macrorit Partition Expert</strong></p>\r\n<table border=\"0\" width=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\r\n<tbody>\r\n<tr>\r\n<td><img title=\"Top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; tốt nhất\" src=\"http://st.galaxypub.vn/staticFile/Subject/2020/07/03/291733/top-5-phan-mem-phan-vung-o-dia-mien-phi-tot-nhat_31727504.jpg\" alt=\"Top 5 phan mem phan vung o dia mien phi tot nhat\" align=\"center\" border=\"0\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Khi nhắc đến những&nbsp;<a href=\"https://freetuts.net/thu-thuat/phan-mem-phan-vung-o-dia-907t.html\" target=\"_BLANK\">phần mềm ph&acirc;n v&ugrave;ng ổ đĩa</a>&nbsp;tốt nhất hiện nay th&igrave; kh&ocirc;ng thể kh&ocirc;ng nhắc đến c&aacute;i t&ecirc;n&nbsp;<strong>Macrorit Partition Expert</strong>. Phần mềm n&agrave;y nổi bật với khả năng bảo vệ dữ liệu an to&agrave;n v&agrave; mang đến hiệu suất tuyệt vời cho người d&ugrave;ng.</p>\r\n<p>Tương tự như 2 phần mềm tr&ecirc;n, Macrorit Partition Expert cũng được trang bị rất nhiều t&iacute;nh năng gi&uacute;p quản l&yacute; ổ đĩa hiệu quả như: mở rộng, tạo, x&oacute;a v&agrave; định dạng ph&acirc;n v&ugrave;ng, kiểm tra bề mặt ph&acirc;n v&ugrave;ng, &hellip;</p>\r\n<p>Một số t&iacute;nh năng đ&aacute;ng gi&aacute; của phần mềm n&agrave;y đ&oacute; l&agrave;:</p>\r\n<p>- Chuyển đổi MBR sang đĩa GPT v&agrave;&nbsp; NTFS sang FAT32 m&agrave; kh&ocirc;ng mất dữ liệu.</p>\r\n<p>- Cho ph&eacute;p thay đổi k&iacute;ch thước ph&acirc;n v&ugrave;ng FAT, FAT32.</p>\r\n<p>- Trang bị c&ocirc;ng nghệ hiện đại gi&uacute;p kh&ocirc;i phục dữ liệu nhanh ch&oacute;ng, hiệu quả.</p>\r\n<p>- Hỗ trợ đĩa lớn hơn 2TB v&agrave; 16 TB của đĩa cứng</p>\r\n<p>- C&ugrave;ng rất nhiều chức năng hữu hiệu kh&aacute;c như: Ph&acirc;n chia ổ đĩa, khắc phục sự cố, chống ph&acirc;n mảnh, ...</p>\r\n<p><strong>4. Cute Partition Manager</strong></p>\r\n<table border=\"0\" width=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\r\n<tbody>\r\n<tr>\r\n<td><img title=\"Top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; tốt nhất\" src=\"http://st.galaxypub.vn/staticFile/Subject/2020/07/03/291733/top-5-phan-mem-phan-vung-o-dia-mien-phi-tot-nhat_31728491.jpg\" alt=\"Top 5 phan mem phan vung o dia mien phi tot nhat\" align=\"center\" border=\"0\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Th&ecirc;m một phần mềm ph&acirc;n v&ugrave;ng ổ đĩa được kh&aacute; nhiều người quan t&acirc;m hiện nay đ&oacute; ch&iacute;nh l&agrave;&nbsp;<strong>Cute Partition Manager</strong>. Đ&acirc;y l&agrave; phần mềm hỗ trợ người d&ugrave;ng trong việc quản l&yacute; v&agrave; thực hiện c&aacute;c chức năng cần thiết như th&ecirc;m, sửa, x&oacute;a hoặc định dạng lại ph&acirc;n v&ugrave;ng tr&ecirc;n đĩa cứng của hệ thống.</p>\r\n<p>Cute Partition Manager nổi bật với t&iacute;nh năng cho ph&eacute;p người d&ugrave;ng xem trước những thay đổi khi thực hiện v&agrave; trước khi lưu lại.</p>\r\n<p>Ngo&agrave;i ra, phần mềm n&agrave;y c&ograve;n được người d&ugrave;ng ưa chuộng nhờ t&iacute;ch hợp những t&iacute;nh năng sau:</p>\r\n<p>- Cho ph&eacute;p tạo nhiều ph&acirc;n v&ugrave;ng tr&ecirc;n ổ cứng</p>\r\n<p>- Hỗ trợ thay đổi những tham số ph&acirc;n v&ugrave;ng n&acirc;ng cao</p>\r\n<p>- C&oacute; khả năng x&oacute;a bỏ mọi ph&acirc;n v&ugrave;ng đơn trong hệ thống.</p>\r\n<p>- Cho ph&eacute;p c&agrave;i đặt tất cả c&aacute;c hệ điều h&agrave;nh từ đầu.</p>\r\n<p>- K&iacute;ch thước tải xuống của phần mềm kh&aacute; nhỏ</p>\r\n<p>- Ho&agrave;n to&agrave;n miễn ph&iacute;</p>\r\n<p>Tuy nhi&ecirc;n phần mềm n&agrave;y hơi kh&oacute; sử dụng v&igrave; kh&ocirc;ng c&oacute; giao diện người d&ugrave;ng đồ họa v&agrave; n&oacute; cũng kh&ocirc;ng được trang bị một số t&iacute;nh năng n&acirc;ng cao như: sao ch&eacute;p hay di chuyển dữ liệu giữa c&aacute;c ổ đĩa.</p>\r\n<p><strong>5.&nbsp; Active@ Partition Manager</strong></p>\r\n<table border=\"0\" width=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\r\n<tbody>\r\n<tr>\r\n<td><img title=\"Top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; tốt nhất\" src=\"http://st.galaxypub.vn/staticFile/Subject/2020/07/03/291733/top-5-phan-mem-phan-vung-o-dia-mien-phi-tot-nhat_31729643.jpg\" alt=\"Top 5 phan mem phan vung o dia mien phi tot nhat\" align=\"center\" border=\"0\" /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Nếu bạn đang t&igrave;m kiếm một phần mềm ph&acirc;n v&ugrave;ng ổ đĩa tốt, miễn ph&iacute; t&iacute;ch hợp nhiều t&iacute;nh năng hữu &iacute;ch th&igrave;&nbsp;<strong>Active@ Partition Manager</strong>&nbsp;l&agrave; sự lựa chọn tuyệt vời cho bạn.</p>\r\n<p>Đ&acirc;y l&agrave; một phần mềm quản l&yacute;, ph&acirc;n v&ugrave;ng ổ cứng m&aacute;y t&iacute;nh rất mạnh mẽ, hỗ trợ tất cả c&aacute;c t&iacute;nh năng quản l&yacute; ph&acirc;n v&ugrave;ng như tạo, x&oacute;a, định dạng v&agrave; ph&acirc;n v&ugrave;ng t&ecirc;n tr&ecirc;n m&aacute;y t&iacute;nh m&agrave; kh&ocirc;ng cần tắt hệ thống như một số phần mềm kh&aacute;c.</p>\r\n<p>Ngo&agrave;i ra, phần mềm n&agrave;y c&ograve;n được nhiều người sử dụng nhờ khả năng đổi t&ecirc;n, thay đổi c&aacute;c thuộc t&iacute;nh của ổ đĩa hoặc x&oacute;a vĩnh viễn nội dung ổ cứng.</p>\r\n<p>Bạn n&ecirc;n sử dụng phần mềm n&agrave;y v&igrave; những l&yacute; do sau:</p>\r\n<p>- hần mềm dễ sử dụng, giao diện th&acirc;n thiện</p>\r\n<p>- Hỗ trợ kh&ocirc;i phục, tạo ph&acirc;n v&ugrave;ng mới, chuyển đổi định dạng m&agrave; kh&ocirc;ng mất dữ liệu, ...</p>\r\n<p>- Trang bị rất nhiều chức năng ph&acirc;n v&ugrave;ng</p>\r\n<p>- Bạn c&oacute; thể kh&ocirc;i phục một số thay đổi th&ocirc;ng qua c&aacute;c bản sao lưu.</p>\r\n<p>- Đặc biệt với phần mềm n&agrave;y người d&ugrave;ng c&oacute; thể chạy song song c&aacute;c hệ điều h&agrave;nh tr&ecirc;n c&ugrave;ng một m&aacute;y t&iacute;nh</p>\r\n<p>Điểm trừ của phần mềm n&agrave;y đ&oacute; l&agrave;:&nbsp;</p>\r\n<p>- Kh&ocirc;ng trang bị ph&acirc;n v&ugrave;ng nh&acirc;n bản hay n&oacute;i c&aacute;ch kh&aacute;c l&agrave; kh&ocirc;ng thể sao ch&eacute;p hoặc sao ch&eacute;p ph&acirc;n v&ugrave;ng</p>\r\n<p>- Kh&ocirc;ng cho ph&eacute;p thay đổi k&iacute;ch thước c&aacute;c ph&acirc;n v&ugrave;ng bị kh&oacute;a, điều đ&oacute; c&oacute; nghĩa l&agrave; bạn kh&ocirc;ng thể thay đổi k&iacute;ch thước của hệ thống.</p>\r\n<p>Tr&ecirc;n đ&acirc;y l&agrave; top 5 phần mềm ph&acirc;n v&ugrave;ng ổ đĩa miễn ph&iacute; tốt nhất hiện nay theo đ&aacute;nh gi&aacute; của người d&ugrave;ng. Hy vọng qua b&agrave;i viết n&agrave;y bạn đ&atilde; c&oacute; thể chọn cho m&igrave;nh được một phần mềm ph&ugrave; hợp để quản l&yacute; ph&acirc;n v&ugrave;ng, ph&acirc;n chia ổ cứng một c&aacute;ch hiệu quả nhất.&nbsp;</p>\r\n<p>Ch&uacute;c c&aacute;c bạn th&agrave;nh c&ocirc;ng!</p>\r\n</div>', 'Top 5 phần mềm phân vùng ổ đĩa được nhiều người sử dụng nhất hiện nay', 'cat02', 'https://photo-1-baomoi.zadn.vn/w300_r3x2/2020_07_03_132_35573087/2b86d35a66198f47d608.jpg', '', '000002', '000003', '2020-07-23 00:00:00', 0, 1, 0),
-('000003', 'Smartphone chip S710, RAM 4 GB, pin 5.000 mAh, giá 5,68 triệu', '\r\n<div>\r\n<div>DNVN - Motorola One Fusion vừa được giới thiệu với gi&aacute; b&aacute;n 199.990 Peso (tương đương 5,68 triệu đồng). M&aacute;y d&ugrave;ng chip Qualcomm Snapdragon 710, RAM 4 GB, 4 camera sau, pin 5.000 mAh.</div>\r\n<div>\r\n<div>Motorola One Fusion&nbsp;sở hữu k&iacute;ch thước lần lượt l&agrave; 164,96x75,85x9,4 mm, trọng lượng 202 g. Cảm biến v&acirc;n tay một chạm được bố tr&iacute; ở logo Motorola nơi mặt lưng.</div>\r\n<div>&nbsp;</div>\r\n<div>\r\n<div><img style=\"height: 249px; display: block; margin-left: auto; margin-right: auto;\" title=\"Motorola One Fusion.\" src=\"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2020/07/03/Motorola-One-Fusion-1.jpg\" alt=\"Motorola One Fusion.\" width=\"375\" />\r\n<p style=\"text-align: center;\">Motorola One Fusion.</p>\r\n</div>\r\n</div>\r\n<div>One Fusion được trang bị tấm nền m&agrave;n h&igrave;nh IPS c&ocirc;ng nghệ Max Vision với k&iacute;ch thước 6,5 inch, độ ph&acirc;n giải HD Plus (1.600x720 pixel). M&agrave;n h&igrave;nh n&agrave;y được chia theo tỷ lệ 19,5:9, thiết kế dạng giọt nước. Dung lượng pin 5.000 mAh nhưng chưa r&otilde; c&oacute; t&iacute;ch hợp c&ocirc;ng nghệ sạc nhanh hay kh&ocirc;ng.</div>\r\n<div>&nbsp;</div>\r\n<div>&ldquo;Tr&aacute;i tim&rdquo; của Motorola One Fusion l&agrave; vi xử l&yacute; Qualcomm Snapdragon 710 (10nm) l&otilde;i 8 với xung nhịp tối đa 2,2 GHz, GPU Adreno 616. RAM 4 GB/ROM 64 GB, c&oacute; khay cắm thẻ microSD với dung lượng tối đa 512 GB. Hệ điều h&agrave;nh Android 10.</div>\r\n<div>&nbsp;</div>\r\n<div>\r\n<div><img style=\"height: 250px; display: block; margin-left: auto; margin-right: auto;\" src=\"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2020/07/03/Motorola-One-Fusion-2.jpg\" width=\"375\" border=\"0\" /></div>\r\n</div>\r\n<div>Motorola One Fusion sở hữu 4 camera sau. Cảm biến ch&iacute;nh 48 MP, ống k&iacute;nh thứ hai 8 MP với g&oacute;c rộng 118 độ. Camera macro 5 MP c&ugrave;ng cảm biến chiều s&acirc;u 2 MP. One Fusion hỗ trợ quay video 4K. M&aacute;y ảnh selfie 8 MP.</div>\r\n<div>&nbsp;</div>\r\n<div>Tại Chile, Motorola One Fusion đem đến cho kh&aacute;ch h&agrave;ng 2 tuỳ chọn m&agrave;u sắc gồm Emerald Green v&agrave; Deep Sapphire Blue. M&aacute;y c&oacute; gi&aacute; b&aacute;n 199.990 Peso (tương đương 5,68 triệu đồng).</div>\r\n<div><br />\r\n<div><a href=\"https://doanhnghiepvn.vn/su-kien/bang-gia-dien-thoai/17\" target=\"_blank\" rel=\"noopener\"><img style=\"height: 250px; display: block; margin-left: auto; margin-right: auto;\" title=\"Bảng gi&aacute; điện thoại.\" src=\"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2019/11/20/bang-gia-dien-thoai.jpg\" alt=\"Bảng gi&aacute; điện thoại.\" width=\"375\" /></a></div>\r\n</div>\r\n</div>\r\n</div>', 'Motorola One Fusion vừa được giới thiệu với giá bán 199.990 Peso (tương đương 5,68 triệu đồng). ', 'cat02', 'https://photo-1-baomoi.zadn.vn/w300_r3x2/2020_07_03_304_35573467/bdec9a392f7ac6249f6b.jpg', '', '000007', NULL, '2020-07-30 00:00:00', 0, 0, 1),
+('000003', 'Smartphone chip S710, RAM 4 GB, pin 5.000 mAh, giá 5,68 triệu', '<div>\r\n<div>DNVN - Motorola One Fusion vừa được giới thiệu với gi&aacute; b&aacute;n 199.990 Peso (tương đương 5,68 triệu đồng). M&aacute;y d&ugrave;ng chip Qualcomm Snapdragon 710, RAM 4 GB, 4 camera sau, pin 5.000 mAh.</div>\r\n<div>\r\n<div>Motorola One Fusion&nbsp;sở hữu k&iacute;ch thước lần lượt l&agrave; 164,96x75,85x9,4 mm, trọng lượng 202 g. Cảm biến v&acirc;n tay một chạm được bố tr&iacute; ở logo Motorola nơi mặt lưng.</div>\r\n<div>&nbsp;</div>\r\n<div>\r\n<div><img style=\"height: 249px; display: block; margin-left: auto; margin-right: auto;\" title=\"Motorola One Fusion.\" src=\"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2020/07/03/Motorola-One-Fusion-1.jpg\" alt=\"Motorola One Fusion.\" width=\"375\" />\r\n<p style=\"text-align: center;\">Motorola One Fusion.</p>\r\n</div>\r\n</div>\r\n<div>One Fusion được trang bị tấm nền m&agrave;n h&igrave;nh IPS c&ocirc;ng nghệ Max Vision với k&iacute;ch thước 6,5 inch, độ ph&acirc;n giải HD Plus (1.600x720 pixel). M&agrave;n h&igrave;nh n&agrave;y được chia theo tỷ lệ 19,5:9, thiết kế dạng giọt nước. Dung lượng pin 5.000 mAh nhưng chưa r&otilde; c&oacute; t&iacute;ch hợp c&ocirc;ng nghệ sạc nhanh hay kh&ocirc;ng.</div>\r\n<div>&nbsp;</div>\r\n<div>&ldquo;Tr&aacute;i tim&rdquo; của Motorola One Fusion l&agrave; vi xử l&yacute; Qualcomm Snapdragon 710 (10nm) l&otilde;i 8 với xung nhịp tối đa 2,2 GHz, GPU Adreno 616. RAM 4 GB/ROM 64 GB, c&oacute; khay cắm thẻ microSD với dung lượng tối đa 512 GB. Hệ điều h&agrave;nh Android 10.</div>\r\n<div>&nbsp;</div>\r\n<div>\r\n<div><img style=\"height: 250px; display: block; margin-left: auto; margin-right: auto;\" src=\"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2020/07/03/Motorola-One-Fusion-2.jpg\" width=\"375\" border=\"0\" /></div>\r\n</div>\r\n<div>Motorola One Fusion sở hữu 4 camera sau. Cảm biến ch&iacute;nh 48 MP, ống k&iacute;nh thứ hai 8 MP với g&oacute;c rộng 118 độ. Camera macro 5 MP c&ugrave;ng cảm biến chiều s&acirc;u 2 MP. One Fusion hỗ trợ quay video 4K. M&aacute;y ảnh selfie 8 MP.</div>\r\n<div>&nbsp;</div>\r\n<div>Tại Chile, Motorola One Fusion đem đến cho kh&aacute;ch h&agrave;ng 2 tuỳ chọn m&agrave;u sắc gồm Emerald Green v&agrave; Deep Sapphire Blue. M&aacute;y c&oacute; gi&aacute; b&aacute;n 199.990 Peso (tương đương 5,68 triệu đồng).</div>\r\n<div><br />\r\n<div><a href=\"https://doanhnghiepvn.vn/su-kien/bang-gia-dien-thoai/17\" target=\"_blank\" rel=\"noopener\"><img style=\"height: 250px; display: block; margin-left: auto; margin-right: auto;\" title=\"Bảng gi&aacute; điện thoại.\" src=\"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2019/11/20/bang-gia-dien-thoai.jpg\" alt=\"Bảng gi&aacute; điện thoại.\" width=\"375\" /></a></div>\r\n</div>\r\n</div>\r\n</div>', '                              Motorola One Fusion vừa được giới thiệu với giá bán 199.990 Peso (tương đương 5,68 triệu đồng). \r\n        \r\n        \r\n        ', 'cat02', 'https://photo-1-baomoi.zadn.vn/w300_r3x2/2020_07_03_304_35573467/bdec9a392f7ac6249f6b.jpg', '', '000007', NULL, '2020-08-26 00:00:00', 0, 0, 1),
 ('000004', 'Smartphone màn hình cuộn của LG sẽ trình làng vào đầu năm tới', '\r\n<div><header>\r\n<div>&nbsp;</div>\r\n<div>\r\n<div>Theo một b&aacute;o c&aacute;o mới, c&ocirc;ng ty LG sẽ ra mắt điện thoại th&ocirc;ng minh m&agrave;n h&igrave;nh cuộn, t&ecirc;n m&atilde; l&agrave; Project B, v&agrave;o đầu năm 2021.</div>\r\n</div>\r\n</header>\r\n<article>\r\n<div>\r\n<p>Được biết, m&agrave;n h&igrave;nh của thiết bị sẽ do nh&agrave; sản xuất BOE cung cấp, chứ kh&ocirc;ng phải l&agrave; LG Display. Việc sản xuất nguy&ecirc;n mẫu đ&atilde; được tiến h&agrave;nh tại nh&agrave; m&aacute;y của LG ở Pyeongtaek. Khoảng 1.000 đến 2.000 nguy&ecirc;n mẫu được sản xuất v&agrave; th&ocirc;ng thường, mỗi sản phẩm phải trải qua ba đến bốn v&ograve;ng nguy&ecirc;n mẫu trước khi chốt được mẫu cuối c&ugrave;ng.</p>\r\n<div><img style=\"height: 240px; display: block; margin-left: auto; margin-right: auto;\" src=\"https://image.nghenhinvietnam.vn/w1024/Uploaded/2020/tpuohuo/2020_07_03/gsmarena_001_kmrj.jpg\" alt=\"Smartphone m&agrave;n h&igrave;nh cuộn của LG sẽ tr&igrave;nh l&agrave;ng v&agrave;o đầu năm tới ảnh 1\" width=\"375\" data-photo-original-src=\"https://image.nghenhinvietnam.vn/Uploaded/2020/tpuohuo/2020_07_03/gsmarena_001_kmrj.jpg\" /></div>\r\n<p>&nbsp;</p>\r\n<p>Theo th&ocirc;ng tin r&ograve; rỉ, t&ecirc;n &ldquo;B&rdquo; được đặt theo chữ c&aacute;i đầu ti&ecirc;n trong t&ecirc;n của CEO LG Kwon Bong-seok.</p>\r\n<p>B&ecirc;n cạnh Project B, LG được đồn đại l&agrave; sẽ ra mắt hai thiết bị smartphone h&agrave;ng đầu mới v&agrave;o nửa đầu năm 2021, c&oacute; t&ecirc;n m&atilde; lần lượt l&agrave; &ldquo;Rainbow&rdquo; v&agrave; &ldquo;Wing&rdquo;.</p>\r\n<p>Theo bằng s&aacute;ng chế được đăng k&yacute; trước đ&oacute;, Project B sẽ sở hữu m&agrave;n h&igrave;nh OLED với c&aacute;c khớp uốn linh hoạt. Điện thoại được chia l&agrave;m 2 phần, phần m&agrave;n h&igrave;nh v&agrave; phần th&acirc;n m&aacute;y, d&ugrave;ng để chứa c&aacute;c linh kiện kh&aacute;c cũng như để cầm nắm. Khi kh&ocirc;ng sử dụng, m&agrave;n h&igrave;nh cuộn lại xung quanh phần th&acirc;n m&aacute;y.</p>\r\n</div>\r\n</article>\r\n</div>\r\n<div>\r\n<div>\r\n<div>&nbsp;</div>\r\n</div>\r\n</div>', 'Công ty LG sẽ ra mắt điện thoại thông minh màn hình cuộn, tên mã là Project B, vào đầu năm 2021.', 'cat02', 'https://photo-1-baomoi.zadn.vn/w300_r3x2/2020_07_03_280_35573498/ad24caf27fb196efcfa0.jpg', '', '000002', '000003', '2020-07-07 00:00:00', 5, 1, 0),
 ('000005', '21 ứng dụng độc hại bạn nên xóa khỏi điện thoại ngay lập tức', '\r\n<div>\r\n<div>&nbsp;</div>\r\n</div>\r\n<div>\r\n<div id=\"ctl00_main_pSummary\">\r\n<div>(PLO)- Vừa qua, c&aacute;c nh&agrave; nghi&ecirc;n cứu bảo mật của ESET đ&atilde; ph&aacute;t hiện 21 ứng dụng độc hại tr&ecirc;n Google Play, sử dụng nhiều thủ thuật để &ldquo;ẩn m&igrave;nh&rdquo; tr&ecirc;n điện thoại sau khi được c&agrave;i đặt.</div>\r\n</div>\r\n<div id=\"abody\">\r\n<p><strong>Danh s&aacute;ch 21 ứng dụng độc hại tr&ecirc;n Google Play</strong></p>\r\n<p>Theo ESET, 21 ứng dụng độc hại đ&atilde; được tải xuống v&agrave; c&agrave;i đặt hơn t&aacute;m triệu lần tr&ecirc;n Google Play. Hiện tại tất cả những ứng dụng n&agrave;y đ&atilde; bị x&oacute;a bỏ, tuy nhi&ecirc;n, ch&uacute;ng c&oacute; thể vẫn c&ograve;n tồn tại tr&ecirc;n điện thoại của người d&ugrave;ng v&agrave; c&aacute;c kho ứng dụng của b&ecirc;n thứ ba.&nbsp;</p>\r\n<p style=\"text-align: center;\"><a href=\"https://image.plo.vn/w559/Uploaded/2020/vrwqqxjwp/2020_07_02/ung-dung-doc-hai_htyj.jpg\" data-index=\"0\" data-desc=\"21 ứng dụng độc hại bị ESET ph&aacute;t hiện, trong đ&oacute; c&oacute; một số nh&agrave; ph&aacute;t triển của Việt Nam. Ảnh: ESET\"><img style=\"height: 310px; width: 308px;\" src=\"https://image.plo.vn/w559/Uploaded/2020/vrwqqxjwp/2020_07_02/ung-dung-doc-hai_htyj.jpg\" alt=\"21-ung-dung-doc-hai\" longdesc=\"https://kynguyenso.plo.vn/ky-nguyen-so/nhip-cong-nghe/21%20%E1%BB%A9ng%20d%E1%BB%A5ng%20%C4%91%E1%BB%99c%20h%E1%BA%A1i%20b%E1%BB%8B%20ESET%20ph%C3%A1t%20hi%E1%BB%87n,%20trong%20%C4%91%C3%B3%20c%C3%B3%20m%E1%BB%99t%20s%E1%BB%91%20nh%C3%A0%20ph%C3%A1t%20tri%E1%BB%83n%20c%E1%BB%A7a%20Vi%E1%BB%87t%20Nam\" /></a><br /><em>21 ứng dụng độc hại bị ESET ph&aacute;t hiện, trong đ&oacute; c&oacute; một số nh&agrave; ph&aacute;t triển của Việt Nam. Ảnh: ESET</em></p>\r\n<p>Dưới đ&acirc;y l&agrave; danh s&aacute;ch 21 ứng dụng độc hại sử dụng quảng c&aacute;o như một h&igrave;nh thức tấn c&ocirc;ng:</p>\r\n<p>- Basketball Perfect Shot by JJDO TK</p>\r\n<p>- DU Recorder - Screen Recorder by Claure Apps</p>\r\n<p>- File Downloader for Insta by Carmen D. Adkins</p>\r\n<p>- Flat Music Player by Uranium</p>\r\n<p>- Free Radio FM Online by Juke Studio</p>\r\n<p>- Free Social Video Downloader by Mini Apps</p>\r\n<p>- VN Free Top Video Downloader by THELT</p>\r\n<p>- Free Video Downloader by DINH VIET HUNG</p>\r\n<p>- Heroes Jump by JJDO TK</p>\r\n<p>- HikeTop+ - Become Popular in IG by Claure Apps</p>\r\n<p>- Mini Lite for Facebook by Hien-DEV</p>\r\n<p>- MP4 Video Downloader by Tiler Hember</p>\r\n<p>- Ringtone Maker 2019 by CarlosGApps</p>\r\n<p>- Ringtone Maker Pro by DINH VIET HUNG</p>\r\n<p>- Tank Classic &ndash; Super Battle Tank by mrtcorp</p>\r\n<p>- SaveInsta by Uranium</p>\r\n<p>- Smart Gallery by Uranium</p>\r\n<p>- Smart Notes for You by Carmen D. Adkins</p>\r\n<p>- Solucionario de Algebra de Baldor by CarlosGApps</p>\r\n<p>- Video Downloader by TYPHU TEAM</p>\r\n<p>- Water Drink Reminder by Carmen D. Adkins</p>\r\n<p><strong>Phần mềm quảng c&aacute;o g&acirc;y hại cho thiết bị của bạn như thế n&agrave;o?</strong></p>\r\n<p>Theo c&aacute;c nh&agrave; nghi&ecirc;n cứu, sau khi người d&ugrave;ng c&agrave;i đặt ứng dụng, điện thoại sẽ bắt đầu xuất hiện quảng c&aacute;o to&agrave;n m&agrave;n h&igrave;nh. Quảng c&aacute;o c&oacute; thể xuất hiện tr&ecirc;n bất kỳ ứng dụng n&agrave;o, ngay cả khi ứng dụng đ&oacute; kh&ocirc;ng hỗ trợ quảng c&aacute;o.&nbsp;</p>\r\n<p style=\"text-align: center;\"><a href=\"https://image.plo.vn/w559/Uploaded/2020/vrwqqxjwp/2020_07_02/quang-cao-toan-man-hinh_zzvh.png\" data-index=\"1\" data-desc=\"Ứng dụng hiển thị quảng c&aacute;o to&agrave;n m&agrave;n h&igrave;nh, khiến người d&ugrave;ng kh&oacute; chịu. Ảnh: ESET\"><img style=\"height: 292px;\" src=\"https://image.plo.vn/w559/Uploaded/2020/vrwqqxjwp/2020_07_02/quang-cao-toan-man-hinh_zzvh.png\" alt=\"quang-cao-toan-man-hinh\" width=\"329\" longdesc=\"https://kynguyenso.plo.vn/ky-nguyen-so/nhip-cong-nghe/%E1%BB%A8ng%20d%E1%BB%A5ng%20hi%E1%BB%83n%20th%E1%BB%8B%20qu%E1%BA%A3ng%20c%C3%A1o%20to%C3%A0n%20m%C3%A0n%20h%C3%ACnh,%20khi%E1%BA%BFn%20ng%C6%B0%E1%BB%9Di%20d%C3%B9ng%20kh%C3%B3%20ch%E1%BB%8Bu\" /></a><br /><em>Ứng dụng hiển thị quảng c&aacute;o to&agrave;n m&agrave;n h&igrave;nh, khiến người d&ugrave;ng kh&oacute; chịu. Ảnh: ESET</em></p>\r\n<p>Ngo&agrave;i việc hiển thị quảng c&aacute;o, c&aacute;c ứng dụng độc hại c&ograve;n c&oacute; thể l&agrave;m tăng lượng dữ liệu di động, l&agrave;m chậm điện thoại, khiến pin nhanh hết hơn, thu thập th&ocirc;ng tin c&aacute; nh&acirc;n v&agrave; h&agrave;nh vi của người d&ugrave;ng...</p>\r\n<p>Do đ&oacute;, nếu đang c&agrave;i đặt v&agrave; sử dụng một trong c&aacute;c ứng dụng độc hại kể tr&ecirc;n, bạn h&atilde;y v&agrave;o Settings (c&agrave;i đặt) - Apps (ứng dụng), chọn c&aacute;c ứng dụng đ&oacute; v&agrave; nhấn Uninstall (gỡ c&agrave;i đặt). Lưu &yacute;, t&ecirc;n v&agrave; vị tr&iacute; c&aacute;c t&ugrave;y chọn c&oacute; thể thay đổi t&ugrave;y v&agrave;o thiết bị bạn đang sử dụng.</p>\r\n<p>Trước đ&oacute; kh&ocirc;ng l&acirc;u, c&ocirc;ng ty an ninh mạng Evina (Ph&aacute;p) đ&atilde; ph&aacute;t hiện 25 ứng dụng độc hại tr&ecirc;n Google Play c&oacute; khả năng đ&aacute;nh cắp th&ocirc;ng tin đăng nhập Facebook của người d&ugrave;ng.</p>\r\n<p>Cụ thể, c&aacute;c ứng dụng độc hại sẽ kiểm tra xem bạn c&oacute; đang mở ứng dụng Facebook trong nền hay kh&ocirc;ng, sau đ&oacute; ch&uacute;ng sẽ mở một trang đang nhập Facebook giả mạo tr&ecirc;n tr&igrave;nh duyệt v&agrave; dụ người d&ugrave;ng điền th&ocirc;ng tin đăng nhập. Nếu bạn điền email/số điện thoại v&agrave; mật khẩu, mọi thứ sẽ được gửi đến m&aacute;y chủ từ xa.</p>\r\n<p>Đa số những ứng dụng độc hại thường được &ldquo;ngụy trang&rdquo; dưới dạng c&aacute;c phần mềm tiện &iacute;ch như đ&egrave;n pin, m&aacute;y đếm bước ch&acirc;n, tr&igrave;nh chỉnh sửa h&igrave;nh ảnh...</p>\r\n</div>\r\n</div>', '', 'cat02', 'https://photo-1-baomoi.zadn.vn/w700_r16x9_sm/2020_07_02_331_35557222/416c67b4d3f73aa963e6.jpg', NULL, '000002', '000003', '2020-07-20 00:00:00', 0, 2, 0),
 ('000006', '[Infographics] Từ 1/7: Thêm 6 dịch vụ công được giao dịch trực tuyến', '\r\n<div>\r\n<p>&nbsp;</p>\r\n</div>\r\n<h2>Từ 1/7, Cổng Dịch vụ c&ocirc;ng Quốc gia sẽ t&iacute;ch hợp th&ecirc;m 6 dịch vụ c&ocirc;ng, n&acirc;ng tổng số dịch vụ c&ocirc;ng được cung cấp trực tuyến tại đ&acirc;y l&ecirc;n 725.</h2>\r\n<div>\r\n<div>&nbsp;</div>\r\n<div>\r\n<h4>&nbsp;</h4>\r\n</div>\r\n</div>\r\n<div>\r\n<figure><img style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"http://static.tapchitaichinh.vn/w800/images/upload/buituananh/07022020/20200701_dich_vu_cong_duoc_giao_dich_truc_tuyen.jpg\" alt=\"[Infographics] Từ 1/7: Th&ecirc;m 6 dịch vụ c&ocirc;ng được giao dịch trực tuyến - Ảnh 1\" width=\"754\" height=\"1786\" data-original=\"http://static.tapchitaichinh.vn/images/upload/buituananh/07022020/20200701_dich_vu_cong_duoc_giao_dich_truc_tuyen.jpg\" /></figure>\r\n</div>', '', 'cat01', 'https://photo-1-baomoi.zadn.vn/w200_r3x2_sm/2020_07_02_241_35557189/28e4fa3b4e78a726fe69.jpg', NULL, '000002', '000003', '2020-07-13 00:00:00', 2, 1, 0),
@@ -267,7 +336,7 @@ INSERT INTO `posts` (`postsID`, `title`, `content`, `sub_content`, `catID`, `sma
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tags`
+-- Cấu trúc bảng cho bảng `tags`
 --
 
 CREATE TABLE `tags` (
@@ -276,7 +345,7 @@ CREATE TABLE `tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tags`
+-- Đang đổ dữ liệu cho bảng `tags`
 --
 
 INSERT INTO `tags` (`tagID`, `postID`) VALUES
@@ -403,7 +472,7 @@ INSERT INTO `tags` (`tagID`, `postID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `writer`
+-- Cấu trúc bảng cho bảng `writer`
 --
 
 CREATE TABLE `writer` (
@@ -412,7 +481,7 @@ CREATE TABLE `writer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `writer`
+-- Đang đổ dữ liệu cho bảng `writer`
 --
 
 INSERT INTO `writer` (`accID`, `alias`) VALUES
@@ -420,57 +489,63 @@ INSERT INTO `writer` (`accID`, `alias`) VALUES
 ('000007', 'TTT');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `account`
+-- Chỉ mục cho bảng `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`accID`);
 
 --
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `approver_cate`
+--
+ALTER TABLE `approver_cate`
+  ADD PRIMARY KEY (`accID`,`cateID`);
+
+--
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`catID`);
 
 --
--- Indexes for table `comments`
+-- Chỉ mục cho bảng `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`postID`,`accID`,`STT`);
 
 --
--- Indexes for table `detail_categories`
+-- Chỉ mục cho bảng `detail_categories`
 --
 ALTER TABLE `detail_categories`
   ADD PRIMARY KEY (`catID`,`catName`);
 
 --
--- Indexes for table `posts`
+-- Chỉ mục cho bảng `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`postsID`);
 
 --
--- Indexes for table `tags`
+-- Chỉ mục cho bảng `tags`
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`tagID`,`postID`);
 
 --
--- Indexes for table `writer`
+-- Chỉ mục cho bảng `writer`
 --
 ALTER TABLE `writer`
   ADD PRIMARY KEY (`accID`);
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `writer`
+-- Các ràng buộc cho bảng `writer`
 --
 ALTER TABLE `writer`
   ADD CONSTRAINT `FK_wt_ac` FOREIGN KEY (`accID`) REFERENCES `account` (`accID`);

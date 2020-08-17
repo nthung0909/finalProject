@@ -2,7 +2,6 @@ const express = require('express');
 const redi = require('../../middlewares/auth.mdw');
 const users = require('../../models/users.model');
 const adCategory = require('../../models/category.model');
-const { route } = require('../login.route');
 const categoryModel = require('../../models/category.model');
 const usersModel = require('../../models/users.model');
 const bcrypt = require('bcryptjs');
@@ -27,25 +26,41 @@ async function getCategoryID() {
     return 'cat' + tmp;
 }
 router.get('/list', redi.redirectAdminLogin, async(req, res) => {
-    const categorys = await adCategory.all();
+    if (!req.session.adminLogin) {
+        return res.redirect('/login');
+    }
+    if (req.session.authUser.type != 1)
+        return res.redirect('/login');
+    const categories = await adCategory.allByCatID();
+    console.log(categories);
     res.render('admin/categories/categories_list', {
-        authUser: res.locals.lcAuthUser,
-        isAdmin: req.session.authUser.type === 1,
-        isWriter: req.session.authUser.type === 2,
-        isApproved: req.session.authUser.type === 3,
-        categorys
+        isAdminLogin: req.session.adminLogin,
+        authUser: req.session.authUser,
+        isAdmin: req.session.authUser.type == 1,
+        isWriter: req.session.authUser.type == 3,
+        isApproved: req.session.authUser.type == 2,
+        categories
     })
 })
 
 router.get('/detail', async(req, res) => {
-    const catID1 = req.query.id;
-    const rows = await categoryModel.single(catID1);
-    if (rows.length === 0)
-        return res.send('Invalid parameter');
-    const category = rows[0];
+    if (!req.session.adminLogin) {
+        return res.redirect('/login');
+    }
+    if (req.session.authUser.type != 1)
+        return res.redirect('/login');
+    const catID = req.query.id;
+    const cates = await categoryModel.all();
+    const detailCate = await categoryModel.singleDetailCate(catID);
+    console.log(detailCate);
     res.render('admin/categories/edit_categories', {
-        isAdmin: true,
-        category,
+        isAdminLogin: req.session.adminLogin,
+        authUser: req.session.authUser,
+        isAdmin: req.session.authUser.type == 1,
+        isWriter: req.session.authUser.type == 3,
+        isApproved: req.session.authUser.type == 2,
+        detailCate: detailCate[0],
+        cates
     })
 })
 router.post('/update', async(req, res) => {
@@ -62,18 +77,37 @@ router.post('/del', async(req, res) => {
     // thêm dữ liệu
 
 router.get('/add', redi.redirectAdminLogin, async(req, res) => {
-
-
+    if (!req.session.adminLogin) {
+        return res.redirect('/login');
+    }
+    if (req.session.authUser.type != 1)
+        return res.redirect('/login');
     res.render('admin/categories/add_categories', {
-        authUser: res.locals.lcAuthUser,
-        isAdmin: req.session.authUser.type === 1,
-        isWriter: req.session.authUser.type === 2,
-        isApproved: req.session.authUser.type === 3
-            //categories:category,
+        isAdminLogin: req.session.adminLogin,
+        authUser: req.session.authUser,
+        isAdmin: req.session.authUser.type == 1,
+        isWriter: req.session.authUser.type == 3,
+        isApproved: req.session.authUser.type == 2,
+        //categories:category,
+    });
+});
+router.get('/addsubcate', redi.redirectAdminLogin, async(req, res) => {
+    if (!req.session.adminLogin) {
+        return res.redirect('/login');
+    }
+    if (req.session.authUser.type != 1)
+        return res.redirect('/login');
+    const categories = await categoryModel.all();
+    res.render('admin/categories/add_subcategory', {
+        isAdminLogin: req.session.adminLogin,
+        authUser: req.session.authUser,
+        isAdmin: req.session.authUser.type == 1,
+        isWriter: req.session.authUser.type == 3,
+        isApproved: req.session.authUser.type == 2,
+        categories,
     });
 });
 router.post('/add', async(req, res) => {
-
     await getCategoryID().then(value => {
         console.log(value);
         req.body.catID = value;

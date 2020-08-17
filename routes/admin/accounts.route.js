@@ -134,4 +134,10 @@ router.post('/accounts/del', async(req, res) => {
     await usersModel.del(req.body.accID);
     res.redirect('/admin/accounts/list')
 });
+// router.post('/logout', (req, res) => {
+//     delete res.locals.lcAuthUser;
+//     delete req.session.authUser;
+//     delete req.adminLogin;
+//     res.redirect('/');
+// });
 module.exports = router;

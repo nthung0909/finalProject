@@ -128,12 +128,12 @@ module.exports = {
     },
     approvePosts: (id, ap) => {
         return db.load(`update posts
-                    set status=1 and approver="${ap}"
+                    set status=1, approver="${ap}"
                     where postsID="${id}"`);
     },
-    denyPosts: (id) => {
+    denyPosts: (id, ap) => {
         return db.load(`update posts
-                    set status=2
+                    set status=2,approver="${ap}"
                     where postsID="${id}"`);
     },
     patch: (entity) => {

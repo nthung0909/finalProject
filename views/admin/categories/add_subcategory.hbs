@@ -1,0 +1,32 @@
+<div class="row mb-5">
+  <div class="col-3">
+
+  </div>
+  <div class="col-6">
+    <form method="POST" action="">
+     
+      <div class="form-group">
+        <label for="exampleInputEmail1">Tên chuyên con</label>
+        <input autofocus type="text" class="form-control" id="catName" name="catName" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Chuyên mục cha</label>&nbsp;&nbsp;
+        <select class="form-group" name="catID" id="catID">
+        {{#each categories}}
+        <option class="form-group" value="{{catID}}">{{catName}}</option>
+        {{/each}}
+        </select>
+      </div>
+      <div>
+        <a class="btn btn-success" href="/admin/categories/list" role="button">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+        </a>
+        <button type="submit"  class="btn btn-primary">Add</button>
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>

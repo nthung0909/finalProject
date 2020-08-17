@@ -62,7 +62,11 @@ app.use('/profile', require('./routes/reader/profile.route'));
 //app.use('/admin/categories', require('./routes/admin/categories.router'));
 //app.use('/admin', require('./routes/reader/categories.route'));
 app.use('/search', require('./routes/reader/search.route'));
-
+app.use((req, res) => {
+    res.render('404', {
+        layout: false
+    });
+});
 app.listen(PORT, (req, res) => {
     console.log(`app is running at http:${PORT}`);
 });

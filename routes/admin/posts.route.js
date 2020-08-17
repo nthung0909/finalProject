@@ -79,6 +79,7 @@ router.get('/edit', redi.redirectAdminLogin, async(req, res) => {
 })
 router.post('/update', async(req, res) => {
     const post = await postsModel.single(req.body.postsID);
+    post[0].status = 0;
     post[0].title = req.body.title;
     post[0].approver = req.body.approver;
     post[0].isVIP = req.body.isVIP;
@@ -159,7 +160,7 @@ router.get('/approve', async(req, res) => {
     res.redirect('/admin/posts/list');
 });
 router.get('/deny', async(req, res) => {
-    await postsModel.denyPosts(req.query.id);
+    await postsModel.denyPosts(req.query.id, req.session.authUser.accID);
     res.redirect('/admin/posts/list');
 });
 router.post('/removetag', async(req, res) => {
