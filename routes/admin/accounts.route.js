@@ -6,83 +6,93 @@ const categoryModel = require('../../models/category.model');
 const usersModel = require('../../models/users.model');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
+const util = require('../../utils/function');
+const config = require('../../config/default.json');
 
 router.get('/', redi.redirectAdminLogin, (req, res) => {
-    console.log(req.session.authUser);
+    //console.log(req.session.authUser);
+    console.log(req.session.authUser.type == 3);
     res.render('admin/home', {
+        isAdminLogin: req.session.adminLogin,
         authUser: res.locals.lcAuthUser,
-        isAdmin: req.session.authUser.type === 1,
-        isWriter: req.session.authUser.type === 2,
-        isApproved: req.session.authUser.type === 3
+        isAdmin: req.session.authUser.type == 1,
+        isWriter: req.session.authUser.type == 3,
+        isApproved: req.session.authUser.type == 2
     });
 });
 
 router.get('/accounts/list', redi.redirectAdminLogin, async(req, res) => {
+    if (req.session.authUser.type != 1)
+        return res.redirect('/admin');
     const accounts = await users.allWithNoAdmin();
     res.render('admin/accounts/account_list', {
+        isAdminLogin: req.session.adminLogin,
         authUser: res.locals.lcAuthUser,
-        isAdmin: req.session.authUser.type === 1,
-        isWriter: req.session.authUser.type === 2,
-        isApproved: req.session.authUser.type === 3,
+        isAdmin: req.session.authUser.type == 1,
+        isWriter: req.session.authUser.type == 3,
+        isApproved: req.session.authUser.type == 2,
         accounts
-    })
+    });
 })
 
 
 router.get('/accounts/detail', redi.redirectAdminLogin, async(req, res) => {
+    if (req.session.authUser.type != 1)
+        return res.redirect('/admin');
     const Id = req.query.id;
-    const rows = await usersModel.single(Id);
-    const account = rows[0];
-    const typestatus = await usersModel.alltypestatus();
-    const rowsSingleType = await usersModel.singleType(Id);
-    const rowsType = rowsSingleType[0];
-
+    var user = await usersModel.single(Id);
+    user = user[0];
+    console.log(user);
+    var time;
+    if (user.type == 4 && user.time_up) {
+        time = await util.getDateTime(user.time_up);
+    }
+    // console.log(time);
+    if (time)
+        user.time_up = time;
     const style = [{
         css: '/css/admin/edit_account.css'
     }];
     const js = [{
         _js: '/js/admin/account.js'
     }];
-    //console.log(rowsType);
-    //console.log(typestatus);
     res.render('admin/accounts/edit_account', {
         authUser: res.locals.lcAuthUser,
+        isAdminLogin: req.session.adminLogin,
         isAdmin: req.session.authUser.type === 1,
-        isWriter: req.session.authUser.type === 2,
-        isApproved: req.session.authUser.type === 3,
-        account,
-        typestatus,
-        rowsType,
+        isWriter: req.session.authUser.type === 3,
+        isApproved: req.session.authUser.type === 2,
+        user,
         js,
         style
-
     })
 })
 router.post('/accounts/update', async(req, res) => {
-    bcrypt.hash(req.body.password, 8, function(err, hash) {
-        if (err)
-            res.render('/404');
-        else {
-            req.body.password = hash;
-        }
-    });
-
+    const id = req.body.accID;
+    //console.log("req body", req.body);
+    if (req.body.time_up)
+        req.body.time_up = new Date(req.body.time_up);
+    const user = await usersModel.single(id);
+    if (user[0].password != req.body.password) {
+        req.body.password = bcrypt.hashSync(req.body.password, 8);
+    }
+    //console.log("req body", req.body);
     await usersModel.patch(req.body);
     res.redirect('/admin/accounts/list')
 })
-router.post('/accounts/del', async(req, res) => {
-    //console.log("Vo duoc day!");
-    //console.log(req);
-    await usersModel.del(req.body.accID);
-    res.redirect('/admin/accounts/list')
-})
-router.post('/accounts/del', async(req, res) => {
-        //console.log("Vo duoc day!");
-        //console.log(req);
-        await usersModel.del(req.body.accID);
-        res.redirect('/admin/accounts')
-    })
-    // thêm account
+router.get('/accounts/add', redi.redirectAdminLogin, async(req, res) => {
+    if (req.session.authUser.type != 1)
+        return res.redirect('/admin');
+    res.render('admin/accounts/add_account', {
+        authUser: res.locals.lcAuthUser,
+        isAdminLogin: req.session.adminLogin,
+        isAdmin: req.session.authUser.type === 1,
+        isWriter: req.session.authUser.type === 3,
+        isApproved: req.session.authUser.type === 2,
+    });
+
+});
+// thêm account
 async function getAccountID() {
     var account = await usersModel.all();
     var tmp = 0;
@@ -101,15 +111,6 @@ async function getAccountID() {
     }
     return tmp;
 }
-router.get('/accounts/add', redi.redirectAdminLogin, async(req, res) => {
-    res.render('admin/accounts/add_account', {
-        authUser: res.locals.lcAuthUser,
-        isAdmin: req.session.authUser.type === 1,
-        isWriter: req.session.authUser.type === 2,
-        isApproved: req.session.authUser.type === 3,
-        //categories:category,
-    });
-});
 
 router.post('/accounts/add', async(req, res) => {
     //  bcrypt.hash(req.body.password,30).then(rs=>{
@@ -117,13 +118,9 @@ router.post('/accounts/add', async(req, res) => {
     //  }).catch(err=>{
     //      console.log("can not hash");
     //  });
-    bcrypt.hash(req.body.password, 8, function(err, hash) {
-        if (err)
-            res.render('/404');
-        else
-            req.body.password = hash;
-    });
+    req.body.password = bcrypt.hashSync(req.body.password, 8);
     req.body.time_up = await new Date();
+    req.body.avatar = '/imgs/account_avatar/avatar.jpg';
     await req.body.time_up.setDate(req.body.time_up.getDate() + 7);
     await getAccountID().then(value => {
         req.body.accID = value;
@@ -132,6 +129,9 @@ router.post('/accounts/add', async(req, res) => {
     const rs = await usersModel.add(req.body);
     //console.log(rs);
     res.redirect('/admin/accounts/list');
-})
-
+});
+router.post('/accounts/del', async(req, res) => {
+    await usersModel.del(req.body.accID);
+    res.redirect('/admin/accounts/list')
+});
 module.exports = router;

@@ -102,6 +102,10 @@
     color: #2fa1b3;
 }
 
+.sub-title button {
+    size: auto;
+}
+
 .dropdown-toggle::after {
     border: none !important;
 }

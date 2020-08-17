@@ -1,103 +1,96 @@
 <div class="row">
-  <div class="col-3">
+  <div class="col-2">
 
   </div>
-  <div class="col-6">
+  <div class="col-8">
     <form method="POST">
-      <div class="form-group">
-        <label for="exampleInputEmail1">PostID</label>
-        <input type="text" class="form-control" id="txtpostID" name="postsID" value="{{this.post.postsID}}">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Title</label>
-        <input type="text" class="form-control" id="txtcatName" name="title" value="{{this.post.title}}" autofocus>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">CatID</label>
-        <select class="form-control" id="catid" name="catID">
-          <option value="{{post.catID}}" selected>{{post.catName}}</option>
-          {{#each catID}}
-          <option value="{{catID}}">
-            {{catName}}
-          </option>
-
+      <div class="form-group d-flex justify-content-around mb-2">
+       <div class="form-inline">
+          <label for="exampleInputEmail1">ID</label>&nbsp;&nbsp;
+        <input readonly type="text" class="form-control" id="postsID" name="postsID" value="{{this.posts.postsID}}">
+       </div>
+       <div class="form-inline">
+         <label for="exampleInputEmail1">Chuyên mục</label>&nbsp;&nbsp;
+         {{#if isApprover}}
+          <input type="text" class="form-control" readonly value="{{posts.catName}}">
+          {{else}}
+           <select class="form-control" id="catid" name="catID">
+          <option value="{{posts.catID}}" selected>{{posts.catName}}</option>
+          {{#each ../detailCate}}
+            <option value="{{detailID}}">{{catName}}</option>
           {{/each}}
-        </select>
-
+          </select>
+          {{/if}}
+       </div>        
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Writer</label>
-        <select class="form-control" id="lbwriter" name="writer">
-          <option value="{{post.writer}}" selected>{{post.fullname}}</option>
-          {{#each writer }}
-          <option value="{{accID}}">
-            {{fullname}}
-          </option>
-
-
-          {{/each}}
-        </select>
+        <label for="exampleInputEmail1">Tiêu đề:</label>
+        <input type="text" class="form-control" id="txtcatName" name="title" value="{{this.posts.title}}" >
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Approver</label>
-        <select class="form-control" id="lbapprover" name="approver">
-          <option value="{{approver.approver}}" selected>{{approver.fullname}}</option>
-          {{#each writer}}
-          <option value="{{accID}}">
-            {{fullname}}
-          </option>
-
-
-          {{/each}}
+        <label for="exampleInputEmail1">Nội dung tóm tắt:</label>
+        <textarea class="form-control mb-2" rows="2" type="text" id="sub_content" name="sub_content">
+          {{posts.sub_content}}
+        </textarea>
+      </div>
+      <div class="form-group d-flex justify-content-around">
+       <div class="form-inline">
+          <label for="exampleInputEmail1">Tác giả:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" class="form-control" value="{{posts.writername}}" readonly>
+       </div>
+        <div class="form-inline">
+          <label for="">Loại bài viết:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <select class="form-control" name="isVIP" id="isVIP">
+          {{#if posts.isVIP}}
+            <option value="0" >Normal</option>
+            <option value="1" selected>Prenium</option>
+          {{else}}
+            <option value="0" selected>Normal</option>
+            <option value="1" >Prenium</option>
+          {{/if}}
         </select>
+        </div>
+        <input type="text" name="writer" id="writer" value="{{posts.writer}}" hidden>
+        <input type="text" name="writer" id="writer" value="{{posts.approver}}" hidden>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Views</label>
-        <input type="text" class="form-control" id="txtcatID" name="views" value="{{this.post.views}}">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Status</label>
-
-        <select class="form-control" id="status" name="status">
-          <option value="{{post.status}}" selected>{{post.statusName}}</option>
-          {{#each status}}
-          <option value="{{statusID}}">
-            {{statusName}}
-          </option>
-
-          {{/each}}
-        </select>
-
-
+        <h4>Nội dung bài viết:</h4>
+        <textarea name="content" id="tinymce">{{posts.content}}</textarea>
       </div>
       <div class="form-groups tag_list">
             <span  style="margin-bottom:0px">Danh sách tag: &nbsp; </span>
-            {{#each tag_list}}
-              <button type="button" class="btn border  p-0">
-                #{{tagID}}
+            {{#each tags}}
+            <span>
+              <button onclick="removeTag(this);" type="button" class="btn border p-0">
+                <span>#</span>{{tagID}}
                 <i class="fa fa-window-close" aria-hidden="true"></i>
               </button>
+            </span>
               &nbsp;&nbsp;
             {{/each}}
-          <div class="form-inline mt-3">
-            <input type="text" class="form-control mr-5" placeholder="nhập nhãn...">
-            <input type="button" class="add_tag" class="btn btn-success" value="Thêm nhãn">
-          </div>
+      </div>
+       <div class="form-inline mt-3">
+            <input type="text" class="form-control mr-2" id="addtag" placeholder="nhập nhãn...">
+            <input type="button" onclick="addTag();" class="add_tag btn btn-success" value="Thêm nhãn">
           </div>
           <br>
+        <div class="form-group">
+          <div class="form-inline">
+            <label for="exampleInputEmail1">Ngày đăng bài:</label>
+          <input type="text" class="form-control ml-2" name="date" id="date" value={{posts.date}}>
+          </div>
+        </div>
           <br>
-      <div>
+          <br>
+      <div class="d-flex justify-content-center pb-5">
         <a class="btn btn-success" href="/admin/posts/list" role="button">
           <i class="fa fa-backward" aria-hidden="true"></i>
-        </a>
-        <button type="submit" class="btn btn-primary" formaction="/admin/posts/update">update</button>
+        </a>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary" formaction="/admin/posts/update">update</button>&nbsp;&nbsp;
         <button type="submit" class="btn btn-danger" title="Remove Posts" formaction="/admin/posts/del">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
-
-
     </form>
   </div>
-
 </div>

@@ -1,47 +1,57 @@
 <div class="row">
-  <div class="col-3">
-
-  </div>
-  <div class="col-6">
+  <div class="col-1"></div>
+  <div class="col-10">
     <form method="POST" action="">
       <div class="form-group">
-        <label for="exampleInputEmail1">PostID</label>
-        <input type="text" class="form-control" id="txtpostID" name="postsID"  >
+        <label for="exampleInputEmail1">Tiêu đề</label>
+        <input type="text" class="form-control" id="title" name="title"  >
+      </div>
+      <div class="form-inline">
+        <div class="form-group mr-5">
+          <label for="exampleInputEmail1">Chuyên mục:</label>&nbsp;&nbsp;&nbsp;
+        <select name="catID" class="form-control" id="catID">
+          {{#each detailcates}}
+            <option value="{{detailID}}">{{catName}}</option>
+          {{/each}}
+        </select>
+        </div>
+        <div class="form-group">
+           <label for="exampleInputEmail1">Loại bài viết:</label>&nbsp;&nbsp;&nbsp;
+          <select name="isVIP" id="isVIP" class="form-control">
+            <option value="0">Normal</option>
+            <option value="1">Prenium</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Title</label>
-        <input type="text" class="form-control" id="txtTitle" name="title"  >
+        <label for="exampleInputEmail1">Nội dung tóm tắt:</label>
+        <textarea class="form-control mb-2" rows="2" type="text" id="sub_content" name="sub_content">
+          {{posts.sub_content}}
+        </textarea>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">CatID</label>
-        <input type="text" class="form-control" id="txtCatId" name="catID"  >
+        <label for="exampleInputEmail1">Hình ảnh đại diện:</label>
+        <input type="file" id="small_avatar" name="small_avatar" class="form-control">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Writer</label>
-        <input type="text" class="form-control" id="txtWriter" name="writer"  >
+        <h4>Nội dung bài viết:</h4>
+        <textarea name="content" id="tinymce">{{posts.content}}</textarea>
       </div>
-     <div class="form-group">
-        <label for="exampleInputEmail1">Approver</label>
-        <input type="text" class="form-control" id="txtapprover" name="approver"  >
+      <div class="form-groups tag_list">
+            <span  style="margin-bottom:0px">Nhãn: &nbsp; </span>
       </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Views</label>
-        <input type="text" class="form-control" id="txtcatID" name="views" >
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Status</label>
-        <input type="text" class="form-control" id="txtstatus" name="status" >
-      </div>
-
+       <div class="form-inline mt-2">
+            <input type="text" class="form-control mr-2" id="addtag" placeholder="nhập nhãn...">
+            <input type="button" onclick="addTag();" class="add_tag btn btn-success" value="Thêm nhãn">
+          </div>
+      <div class="d-flex justify-content-center mt-4 mb-5">
         <a class="btn btn-success" href="/admin/posts/list" role="button">
           <i class="fa fa-backward" aria-hidden="true"></i>
-        </a>
-        <button type="submit" class="btn btn-primary" >Submit</button>
-       
+        </a>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary">Tạo bài viết</button>
       </div>
-
-
-    </form>
+      </form>
   </div>
+    
 
 </div>

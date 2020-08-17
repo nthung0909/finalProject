@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-4 pl-3 pr-3">
     <h class="h3 mb-0 text-gray-800">Dashboard</h>
     <h1>
         <a name="" id="aa" class="btn btn-outline-success" href="/admin/accounts/add" role="button">
@@ -32,7 +32,7 @@
       <td>{{username}}</td>
   
       <td>{{email}}</td>
-      <td>{{type}}</td>
+      <td>{{#getAccountType type}} {{/getAccountType}}</td>
       <td><a href="/admin/accounts/detail?id={{accID}}"><button class="btn btn-primary" type="submit">
           Edit &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
         </td>

@@ -1,0 +1,27 @@
+body {
+    background: linear-gradient(-90deg, rgb(131, 131, 231), aqua) !important;
+}
+
+.card-title {
+    text-align: center;
+    background-color: rgb(158, 73, 238);
+    font-size: 13px;
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 700;
+    padding: 20px 0;
+}
+
+.cart {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.card-body {
+    background-color: #fff;
+}
+
+.btn_submit {
+    justify-content: center;
+    display: flex;
+}

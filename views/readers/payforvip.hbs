@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="row mt-5 pt-5 ">
+        <div class="col-lg-4 col-sm-0">
+        </div>
+        <div class="col-lg-4 col-sm-12 cart  p-0">
+            <div class="cart">
+                <div class=card-title>
+                    <h1>GIA HẠN TÀI KHOẢN</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/payforvip" method="post">
+                        <div class="form-group">
+                            <label class="">Chọn ngày:</label>
+                            <select class="form-control mb-2 mr-3" id="time" name="time">
+                                <option value="7">7 ngày - 1$</option>
+                                <option value="30">30 ngày - 25$</option>
+                                <option value="180">6 tháng -250$ </option>
+                                <option value="365">1 năm - 460$</option>
+                            </select>
+                            <div class="mt-2">
+                                Phương thức thanh toán:
+                                <div class="mt-2 d-flex justify-content-center">
+                                    <img class="icon"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/visa.svg"
+                                        width="54" alt="">&nbsp;
+                                    <img class="icon"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/mastercard.svg"
+                                        width="54" alt="">&nbsp;
+                                    <img class="icon"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/jcb.svg"
+                                        width="54" alt="">&nbsp;
+                                    <img class="icon"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/cash.svg"
+                                        width="54" alt="">&nbsp;
+                                    <img class="icon"
+                                        src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/internet-banking.svg"
+                                        width="54" alt="">&nbsp;
+                                </div>
+                            </div>
+                            <div class="btn_submit mt-2">
+                                <button type="submit" class="btn btn-primary  ">Thanh toán</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -13,5 +13,15 @@ module.exports = {
     },
     allByPostID: (id) => {
         return db.load(`select * from ${TBL_TAGS} where postID=${id}`);
+    },
+    addtag: (entity) => {
+        return db.add(TBL_TAGS, entity);
+    },
+    removetag: function(tag, posts) {
+        const condition = {
+            tagID: tag,
+            postID: posts
+        }
+        return db.del(TBL_TAGS, condition);
     }
 }

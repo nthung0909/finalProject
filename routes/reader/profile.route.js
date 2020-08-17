@@ -27,20 +27,15 @@ router.get('/', redi.redirectLogin, async(req, res) => {
         style,
         pre,
         cate,
-        detailCate
+        detailCate,
+        js
     });
 })
 
 router.post('/update', upload.single("avatar"), async(req, res) => {
     var user = await usersModel.single(req.body.accID);
-    if (!bcrypt.compare(req.body.password, user[0].password) && req.body.password != user[0].password) {
-        bcrypt.hash(req.body.password, 8, function(err, hash) {
-            if (err)
-                res.render('/404');
-            else {
-                req.body.password = hash;
-            }
-        });
+    if (user[0].password != req.body.password) {
+        req.body.password = bcrypt.hashSync(req.body.password, 8);
     }
     var url;
     if (req.file) {
@@ -51,7 +46,6 @@ router.post('/update', upload.single("avatar"), async(req, res) => {
         } else
             url = req.file.originalname;
     }
-
     user[0].fullname = req.body.fullname;
     user[0].password = req.body.password;
     user[0].email = req.body.email;
@@ -64,24 +58,7 @@ router.post('/update', upload.single("avatar"), async(req, res) => {
     res.locals.lcAuthUser.accID = req.body.accID;
     req.session.authUser.accID = req.body.accID;
     res.redirect(`/`);
-})
+});
 
-// router.post('/upload_image', upload.single("avatar"), async (req, res) => {
-//     console.log(req.file);
-//     console.log(req.body);
-//     if (req.file) {
-//         if (req.file.mimetype !== 'image/jpeg' && req.file.mimetype !== 'image/jpg' &&
-//             req.file.mimetype !== 'image/png') {
-//             alert("File extension is not defined");
-//             return;
-//         } else
-//             url = req.file.originalname;
-//     }
-//     console.log(req.query.id);
-//     req.body.avatar = '/imgs/account_avatar/' + url;
-//     console.log(req.body);
-//     await usersModel.patch(req.body);
-//     res.redirect(`/`);
-// })
 
 module.exports = router;

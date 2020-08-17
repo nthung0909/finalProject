@@ -5,20 +5,25 @@
   <div class="col-6">
     <form method="POST" action="">
       <div class="form-group">
-        <label for="exampleInputPassword1">User name</label>
+        <label for="exampleInputPassword1">Tên đăng nhập</label>
         <input class="form-control" id="txtuser" name="username" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">fullname</label>
+        <label for="exampleInputPassword1">Họ tên</label>
         <input type="text" class="form-control" id="txtfullname" name="fullname" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+        <label for="exampleInputPassword1">Mật khẩu</label>
         <input type="password" class="form-control" id="pw" name="password" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Type</label>
-        <input type="text" class="form-control" id="tp" name="type" required>
+        <label for="exampleInputPassword1">Loại tài khoản</label>
+        <select name="type" id="type" class="form-control">
+          <option value="4" selected>Người đọc</option>
+          <option value="3">Kiểm duyệt viên</option>
+          <option value="2">Phóng viên</option>
+          <option value="1">Quản trị viên</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>

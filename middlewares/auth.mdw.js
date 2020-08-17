@@ -21,6 +21,17 @@ module.exports = {
         }
         next();
     },
+    redirectWriterLogin: (req, res, next) => {
+        if (!req.session.adminLogin) {
+            if (res.locals.lcAuthUser)
+                if (res.locals.lcAuthUser.type === 2)
+                    return res.redirect('/admin')
+                else
+                    return next();
+            return res.redirect('/login');
+        }
+        next();
+    },
     redirectAuthUser: (req, res, next) => {
         if (req.session.isLogin) {
             if (req.session.authUser.type === 4)

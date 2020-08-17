@@ -46,3 +46,15 @@ function sendComment() {
 
     });
 }
+
+function getQuery() {
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    var params = [];
+    hashes.forEach(item => {
+        let arr = item.split('=');
+        let tmp = {};
+        tmp[arr[0]] = arr[1];
+        params.push(tmp);
+    });
+    return params;
+}

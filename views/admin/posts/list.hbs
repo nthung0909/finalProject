@@ -1,24 +1,27 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     <h1>
+      {{#if isApproved}}
+      {{else}}
         <a name="" id="" class="btn btn-outline-success" href="/admin/posts/add" role="button">
            Add 
            <i class="fa fa-plus" aria-hidden="true"></i>
         </a>
+      {{/if}}
     </h1>
 </div>
 <div>
     <table class="table" >
   <thead>
     <tr>
-      <th scope="col">PostID</th>
-      <th scope="col">Title</th>
-      <th scope="col">Cat name</th>
-      <th scope="col">Writer</th>
-      <th scope="col">Approver</th>
-      <th scope="col">Views</th>
-      <th scope="col">Status</th>
-      <th scope="col">Edit</th>
+      <th scope="col">ID</th>
+      <th scope="col">Tiêu đề</th>
+      <th scope="col">Chuyên mục</th>
+      <th scope="col">Tác giả</th>
+      <th scope="col">Lượt xem</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Loại bài viết</th>
+      <th scope="col">Sửa</th>
     
     </tr>
   </thead>
@@ -28,14 +31,34 @@
       <td>{{postsID}}</td>
       <td>{{title}}</td>
       <td>{{catName}}</td>
-      <td>{{writer}}</td>
-      <td>{{approver}}</td>
+      <td>{{writername}}</td>
       <td>{{views}}</td>
-      <td>{{status}}</td>
-      <td><a href="/admin/posts/edit?id={{postsID}}"><button class="btn btn-primary" type="submit">
-          Edit &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+      <td>
+        {{#comparePostStatusAndAccType status '0' ../isWriter '0'}}
+            <a href="/admin/posts/approve?id={{../postsID}}"><i class="fa fa-2x fa-check-circle-o" style="color: rgb(14, 253, 74);" aria-hidden="true"></i></a>
+            <a href="/admin/posts/deny?id={{../postsID}}"><i class="fa fa-2x fa-times-circle-o" style="color: red;" aria-hidden="true"></i> </a>
+        {{/comparePostStatusAndAccType}}
+        {{#comparePostStatusAndAccType status '0' ../isWriter '1'}}
+            chờ duyệt
+        {{/comparePostStatusAndAccType}}
+        {{#comparePostStatus status '1'}}
+        <i class="fa fa-2x fa-check-circle-o" style="color: rgb(14, 253, 74);" aria-hidden="true"></i> 
+        {{/comparePostStatus}}
+        {{#comparePostStatus status '2'}}
+            <i class="fa fa-2x fa-times-circle-o" style="color: red;" aria-hidden="true"></i> 
+        {{/comparePostStatus}}
       </td>
-      
+      <td>{{#if isVIP}}Prenium{{else}}Normal{{/if}}</td>
+      <td>
+        {{#comparePostStatus status '0'}}
+        <a href="/admin/posts/edit?id={{../postsID}}"><button class="btn btn-primary" type="submit">
+          <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+        {{/comparePostStatus}}
+        {{#comparePostStatus status '2'}}
+          <a href="/admin/posts/edit?id={{../postsID}}"><button class="btn btn-primary" type="submit">
+          <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+        {{/comparePostStatus}}
+      </td>
     </tr>
     {{/each}}
   </tbody>

@@ -33,10 +33,11 @@ router.get('/', async(req, res) => {
     await posts_of_each_cate.forEach(item => {
         item.date = utilFunction.getDateTime(item.date);
     });
+    const tags = await tagModel.all();
     const style = [{
         css: '/css/posts/style.css'
     }];
-    console.log(res.locals.lcAuthUser);
+    //console.log(res.locals.lcAuthUser);
     res.render('readers/home', {
         authUser: res.locals.lcAuthUser,
         isLogin: res.locals.lcLogin,
@@ -46,11 +47,22 @@ router.get('/', async(req, res) => {
         cate,
         detailCate,
         posts_cate: posts_of_each_cate,
+        tags,
         style
     });
 });
 router.get('/posts', async(req, res) => {
     const news = await posts.single(req.query.id);
+    if (news[0].isVIP) {
+        if (!req.session.isLogin) {
+            return res.redirect('/login')
+        }
+        let now = new Date();
+        let date = new Date(req.session.authUser.time_up);
+        if (now.getTime() > date.getTime()) {
+            return res.redirect('/payforvip');
+        }
+    }
     news[0].date = await utilFunction.getDateTime(news[0].date);
     const detailSingleCate = await cateModel.singleDetailCate(news[0].catID);
     const cateSingle = await cateModel.single(detailSingleCate[0].catID);
@@ -63,6 +75,9 @@ router.get('/posts', async(req, res) => {
     });
     const tags = await tagModel.allByPostID(req.query.id);
     const random = await postsModel.getRandomPosts(detailSingleCate[0].detailID, 5);
+    await random.forEach(item => {
+        item.date = utilFunction.getDateTime(item.date);
+    });
     const style = [{
         css: '/css/posts/style.css'
     }];
@@ -98,6 +113,28 @@ router.post('/posts', async(req, res) => {
     //console.log(req.body);
     await commentsModel.add(req.body);
     res.status(200).send(res.locals.lcAuthUser);
+});
+router.get('/payforvip', async(req, res) => {
+    const style = [{
+        css: '/css/reader/payforvip.css'
+    }]
+    if (!req.session.isLogin)
+        return res.redirect('/login');
+    res.render('readers/payforvip', {
+        authUser: req.session.authUser,
+        layout: false,
+        style
+    })
+});
+router.post('/payforvip', async(req, res) => {
+    var account = await usersModel.single(req.session.authUser.accID);
+    var time = await new Date();
+    time.setDate(time.getDate() + Number(req.body.time));
+    account[0].time_up = time;
+    console.log(account[0]);
+    req.session.authUser.time_up = time;
+    await usersModel.patch(account[0]);
+    res.redirect('/');
 });
 router.post('/logout', function(req, res) {
     req.session.isLogin = false;

@@ -1,131 +1,162 @@
-<div class="row">
+<div class="row pb-5">
     <div class="container pt-3">
-    <div class="row p-0">
-        <div class="col-8 main">
-            {{!-- bài viết nổi bật trong tuần --}}
-            <div class="row">
-                <div class="col-12 content-title">
-                    <h4>Bài viết nổi bật</h4>
-                </div>
-            </div>
-            <p></p>
-            <div class="row">
-                {{#each topweek}}
-                <div class="col-4 pl-0">
-                    <a href="/posts?id={{postsID}}">
-                        <img class="rounded avatar" src="{{small_avatar}}" alt="{{title}}" width="100%">
-                    </a>
-                    <div class="title-top10">
-                        <a href="/posts?id={{postsID}}">{{title}}</a>
-                        {{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
+        <div class="row p-0">
+            <div class="col-8 main">
+                {{!-- bài viết nổi bật trong tuần --}}
+                <div class="row">
+                    <div class="col-12 content-title">
+                        <h4>Bài viết nổi bật</h4>
                     </div>
-                    <br>
-                    <div class="col-12 sub-title p-0">
-                        <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
-                        &nbsp;&nbsp;&nbsp;<span>{{date}}</span>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-            <hr>
-
-            {{!-- 10 bài viết mới nhất --}}
-            <div class="row">
-                <div class="col-12 content-title">
-                    <h4>Bài viết mới nhất</h4>
-                </div>
-            </div>
-            <p></p>
-            <div class="row">
-                {{#each newpost}}
-                <div class="col-4 mb-3">
-                    <a href="/posts?id={{postsID}}">
-                        <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
-                    </a>
-                </div>
-                <div class="col-8 p-0">
-                    <div class="title-top10">
-                        <a href="/posts?id={{postsID}}">
-                            <h4>{{title}}{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}</h4> 
-                        </a>
-                    </div>
-                    <div class="sub-title">
-                        <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
-                        &nbsp;&nbsp;&nbsp;
-                        <span>{{date}}</span>
-                    </div>
-                    <div class="col-12 p-0 pb-4">
-                        {{sub_content}}
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-            {{!-- <hr> --}}
-
-            {{!-- Hiển thị top 10 chuyên mục, mỗi chuyên mục 1 bài mới nhất --}}
-            <div class="row">
-                <div class="col-12 content-title">
-                    <h4>Bài viết - chuyên mục</h4>
-                </div>
-            </div>
-            <p></p>
-            <div class="row">
-                 {{#each posts_cate}}
-                <div class="col-4 mb-3">
-                    <a href="/posts?id={{postsID}}">
-                        <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
-                    </a>
-                </div>
-                <div class="col-8 p-0">
-                    <div class="title-top10">
-                        <a href="/posts?id={{postsID}}">
-                            <h4>{{title}}{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}</h4>
-                        </a>
-                    </div>
-                    <div class="sub-title">
-                        <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
-                        &nbsp;&nbsp;&nbsp;
-                        <span>{{date}}</span>
-                    </div>
-                    <div class="col-12 p-0 pb-4">
-                        {{sub_content}}
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-
-            {{!-- top 10 bài báo được xem nhiều nhất --}}
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12 ml-3 content-title">
-                    <h4>Xem nhiều</h4>
                 </div>
                 <p></p>
-                {{#each this.topview}}
-                <div class="row pl-5">
-                    <div class="col-3 image-top10 mb-2 p-0">
+                <div class="row">
+                    {{#each topweek}}
+                    <div class="col-4 pl-0">
                         <a href="/posts?id={{postsID}}">
-                            <img class="rounded avatar img-fluid" src="{{small_avatar}}" alt="{{title}}">
+                            <img class="rounded avatar" src="{{small_avatar}}" alt="{{title}}" width="100%">
                         </a>
-                    </div>
-                    <div class="col-9 title-top10 mb-2">
                         <div class="title-top10">
-                            <a href="/posts?id={{postsID}}">
-                                <span>{{title}}</span>
-                                {{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
-                            </a>
+                            <a href="/posts?id={{postsID}}">{{title}}</a>
+                            {{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
                         </div>
-                        <div class="col-12 d-flex justify-content-between sub-title p-0">
+                        <div class="col-12 sub-title p-0">
                             <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
-                            <span>{{date}}</span>
-                            <span>{{views}}&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></span>
+                            &nbsp;&nbsp;&nbsp;<span>{{date}}</span>
                         </div>
+                        <div class="col-12 sub-title p-0">
+                            {{#each ../tags}}
+                            {{#getTagOfPosts postID ../postsID}}
+                            <button class="btn m-0 p-0"><a
+                                    href="/search?tag={{../tagID}}">#{{../tagID}}</a></button>&nbsp;&nbsp;
+                            {{/getTagOfPosts}}
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <hr>
+
+                {{!-- 10 bài viết mới nhất --}}
+                <div class="row">
+                    <div class="col-12 content-title">
+                        <h4>Bài viết mới nhất</h4>
                     </div>
                 </div>
-                {{/each}}
+                <p></p>
+                <div class="row">
+                    {{#each newpost}}
+                    <div class="col-4 mb-3">
+                        <a href="/posts?id={{postsID}}">
+                            <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                        </a>
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="title-top10">
+                            <a href="/posts?id={{postsID}}">
+                                <h4>{{title}}{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}</h4>
+                            </a>
+                        </div>
+                        <div class="sub-title">
+                            <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>{{date}}</span>
+                        </div>
+                        <div class="col-12 p-0">
+                            {{sub_content}}
+                        </div>
+                        <div class="col-12 sub-title p-0 pb-4">
+                            {{#each ../tags}}
+                            {{#getTagOfPosts postID ../postsID}}
+                            <button class="btn m-0 p-0"><a
+                                    href="/search?tag={{../tagID}}">#{{../tagID}}</a></button>&nbsp;&nbsp;
+                            {{/getTagOfPosts}}
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{!-- <hr> --}}
+
+                {{!-- Hiển thị top 10 chuyên mục, mỗi chuyên mục 1 bài mới nhất --}}
+                <div class="row">
+                    <div class="col-12 content-title">
+                        <h4>Bài viết - chuyên mục</h4>
+                    </div>
+                </div>
+                <p></p>
+                <div class="row">
+                    {{#each posts_cate}}
+                    <div class="col-4 mb-3">
+                        <a href="/posts?id={{postsID}}">
+                            <img class="rounded avatar" src="{{small_avatar}}" alt="" width="100%">
+                        </a>
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="title-top10">
+                            <a href="/posts?id={{postsID}}">
+                                <h4>{{title}}{{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}</h4>
+                            </a>
+                        </div>
+                        <div class="sub-title">
+                            <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>{{date}}</span>
+                        </div>
+                        <div class="col-12 p-0">
+                            {{sub_content}}
+                        </div>
+                        <div class="col-12 sub-title p-0 pb-4">
+                            {{#each ../tags}}
+                            {{#getTagOfPosts postID ../postsID}}
+                            <button class="btn m-0 p-0"><a
+                                    href="/search?tag={{../tagID}}">#{{../tagID}}</a></button>&nbsp;&nbsp;
+                            {{/getTagOfPosts}}
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                {{!-- top 10 bài báo được xem nhiều nhất --}}
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12 ml-3 content-title">
+                        <h4>Xem nhiều</h4>
+                    </div>
+                    <p></p>
+                    {{#each this.topview}}
+                    <div class="row pl-5">
+                        <div class="col-3 image-top10 mb-2 p-0">
+                            <a href="/posts?id={{postsID}}">
+                                <img class="rounded avatar img-fluid" src="{{small_avatar}}" alt="{{title}}">
+                            </a>
+                        </div>
+                        <div class="col-9 title-top10 mb-2">
+                            <div class="title-top10">
+                                <a href="/posts?id={{postsID}}">
+                                    <span>{{title}}</span>
+                                    {{#if isVIP}} <span style="color: red;">VIP</span> {{/if}}
+                                </a>
+                            </div>
+                            <div class="col-12 d-flex justify-content-between sub-title p-0">
+                                <a href="/search?detailcate={{catName}}"><span>{{catName}}</span></a>
+                                <span>{{date}}</span>
+                                <span>{{views}}&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></span>
+                            </div>
+                            <div class="col-12 sub-title p-0">
+                                {{#each ../tags}}
+                                {{#getTagOfPosts postID ../postsID}}
+                                <button class="btn m-0 p-0"><a
+                                        href="/search?tag={{../tagID}}">#{{../tagID}}</a></button>&nbsp;&nbsp;
+                                {{/getTagOfPosts}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
